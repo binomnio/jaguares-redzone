@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-team-primary: var(--color-team-primary);
+  --color-team-secondary: var(--color-team-secondary);
+  
+  /* NUEVOS TOKENS DE COLOR */
+  --color-team-layout: var(--color-team-layout);
+  --color-team-bg: var(--color-team-bg);
+  --color-team-text: var(--color-team-text);
+  --color-team-glow: var(--color-team-glow);
+  --color-team-button: var(--color-team-button);
+  
+  --font-outfit: var(--font-outfit), sans-serif;
+}
+
+:root {
+  /* Fondo general claro (casi blanco) */
+  --color-background: #f8fafc;
+  /* Textos base en gris muy oscuro para legibilidad */
+  --color-foreground: #1f2937; 
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 
+  Utilidades Glassmorphism & Glow 
+  Se pueden usar directamente en los className
+*/
+
+.glass-panel {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+}
+
+.glass-navbar {
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+/* Ahora el Glow usa la variable team-glow dinámica */
+.glow-primary {
+  box-shadow: 0 0 25px -5px color-mix(in srgb, var(--color-team-glow) 50%, transparent);
+}
+
+.glow-primary-hover:hover {
+  box-shadow: 0 0 30px 2px color-mix(in srgb, var(--color-team-glow) 60%, transparent);
+}
