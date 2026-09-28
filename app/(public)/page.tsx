@@ -38,7 +38,7 @@ export default async function HomePage() {
   const teamShortName = teamData?.short_name || "HAL";
   const teamRecord = teamData?.current_record || "0-0";
   const teamLogo = teamData?.logo_url || "https://bnsports.com.mx/logos/halcones.png";
-  const heroBackground = teamData?.header_bg_url || "https://images.unsplash.com/photo-1659092375775-4e72014d7818"; 
+  const heroBackground = teamData?.header_bg_url || "https://bnsports.com.mx/img/jaguaresback.jpg"; 
 
   // Listas
   const { data: nextGame } = await supabase.from('games').select('*').eq('status', 'upcoming').order('game_date', { ascending: true }).limit(1).maybeSingle();
@@ -64,7 +64,7 @@ export default async function HomePage() {
             <Image src={teamLogo} alt={`Logo ${teamName}`} fill className="object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]" priority />
           </div>
           <h1 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 drop-shadow-md">
-            Bienvenido a Territorio <span className="text-gray-100"> Halcón</span>
+            Somos Garra, Somos Orgullo, Somos <span className="text-[#b21321]"> Jaguares</span>
           </h1>
           
           <p className="text-white/90 text-sm md:text-base font-medium max-w-xl mx-auto drop-shadow-sm mb-6">
@@ -100,7 +100,7 @@ export default async function HomePage() {
               <span className="text-[10px] font-bold uppercase tracking-widest text-team-text">Liga Fademac</span>
               <h2 className="text-xl md:text-2xl font-black text-gray-900 uppercase tracking-tighter">Temporada Juvenil de Otoño 2026</h2>
               {/* Nueva línea para la conferencia */}
-              <span className="text-xs md:text-sm font-bold text-gray-500 mt-0.5">Conferencia Aarón Matos Santos I</span>
+              <span className="text-xs md:text-sm font-bold text-gray-500 mt-0.5">Conferencia Rubén Döring Treviño I</span>
             </div>
           </div>
           
