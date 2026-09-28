@@ -6,16 +6,16 @@ import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Halcones Rojos | BN Sports RedZone', 
+  title: 'Jaguares | BN Sports RedZone', 
   description: 'Sigue el calendario, roster y posiciones de nuestro equipo.', 
   icons: {
     icon: '/favicon.png',   // <-- Cambiado a .png
     apple: '/favicon.png',  // <-- Cambiado a .png (para dispositivos iOS)
   },
   openGraph: {
-    title: 'Halcones Rojos | BN Sports RedZone', 
+    title: 'Jaguares | BN Sports RedZone', 
     description: 'Sigue toda la acción de tu equipo, estadísticas, calendario, roster y posiciones.', 
-    images: ['https://bnsports.com.mx/img/og-halcones.jpg'], 
+    images: ['https://bnsports.com.mx/img/og-jaguares.jpg'], 
     type: 'website',
   },
 };
