@@ -170,9 +170,9 @@ export default function NextGameHero({
           <div className="flex flex-col items-center justify-center">
             {isPast ? (
               <div className="flex items-center gap-2 md:gap-4 text-3xl sm:text-4xl md:text-6xl font-black">
-                <span className={homeWon || isTie ? 'text-gray-900 drop-shadow-sm' : 'text-gray-300'}>{homeScoreDisplay}</span>
+                <span className={homeWon || isTie ? 'text-gray-900 drop-shadow-sm' : 'text-gray-400'}>{homeScoreDisplay}</span>
                 <span className="text-gray-200 text-2xl md:text-4xl">-</span>
-                <span className={awayWon || isTie ? 'text-gray-900 drop-shadow-sm' : 'text-gray-300'}>{awayScoreDisplay}</span>
+                <span className={awayWon || isTie ? 'text-gray-900 drop-shadow-sm' : 'text-gray-400'}>{awayScoreDisplay}</span>
               </div>
             ) : (
               <div className="text-2xl sm:text-3xl md:text-5xl font-black text-gray-700 drop-shadow-sm">

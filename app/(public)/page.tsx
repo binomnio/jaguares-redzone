@@ -52,11 +52,12 @@ export default async function HomePage() {
   return (
     <main className="min-h-screen bg-[#f8fafc] text-gray-800">
       
-      {/* 1. HERO CON DEGRADADO DEL COLOR DEL EQUIPO */}
+{/* 1. HERO CON DEGRADADO SUAVIZADO Y ORGÁNICO */}
       <section className="relative w-full overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src={heroBackground} alt="Fondo" fill className="object-cover object-top opacity-40 mix-blend-multiply" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-team-bg/60 to-[#f8fafc] to-75%"></div>
+          <Image src={heroBackground} alt="Fondo" fill className="object-cover object-top opacity-20 mix-blend-multiply" priority />
+          {/* Degradado ajustado para una transición fluida */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-team-bg/20 to-[#f8fafc]"></div>
         </div>
         
         <div className="pt-12 pb-12 px-4 text-center max-w-3xl mx-auto relative z-10">
