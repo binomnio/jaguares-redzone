@@ -65,7 +65,7 @@ export default async function HomePage() {
             <Image src={teamLogo} alt={`Logo ${teamName}`} fill className="object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]" priority />
           </div>
           <h1 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 drop-shadow-md">
-            Somos Garra, Somos Orgullo, Somos <span className="text-[#b21321]"> Jaguares</span>
+            Somos Garra, Somos Orgullo, Somos <span className="text-[#c1424d]"> Jaguares</span>
           </h1>
           
           <p className="text-white/90 text-sm md:text-base font-medium max-w-xl mx-auto drop-shadow-sm mb-6">
