@@ -38,7 +38,7 @@ export default async function HomePage() {
   const teamShortName = teamData?.short_name || "HAL";
   const teamRecord = teamData?.current_record || "0-0";
   const teamLogo = teamData?.logo_url || "https://bnsports.com.mx/logos/halcones.png";
-  const heroBackground = teamData?.header_bg_url || "https://bnsports.com.mx/img/jaguaresback.jpg"; 
+  const heroBackground = teamData?.header_bg_url || "https://bnsports.com.mx/img/jaguares-back.jpg"; 
 
   // Listas
   const { data: nextGame } = await supabase.from('games').select('*').eq('status', 'upcoming').order('game_date', { ascending: true }).limit(1).maybeSingle();
