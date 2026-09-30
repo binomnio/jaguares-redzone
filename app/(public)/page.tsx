@@ -34,10 +34,10 @@ export default async function HomePage() {
 
   // Datos del Equipo
   const { data: teamData } = await supabase.from('team_settings').select('*').limit(1).maybeSingle();
-  const teamName = teamData?.team_name || "Halcones";
-  const teamShortName = teamData?.short_name || "HAL";
+  const teamName = teamData?.team_name || "Jaguares";
+  const teamShortName = teamData?.short_name || "JAG";
   const teamRecord = teamData?.current_record || "0-0";
-  const teamLogo = teamData?.logo_url || "https://bnsports.com.mx/logos/halcones.png";
+  const teamLogo = teamData?.logo_url || "https://bnsports.com.mx/logos/jaguaresp.png";
   const heroBackground = teamData?.header_bg_url || "https://bnsports.com.mx/img/jaguares-back.jpg"; 
 
   // Listas

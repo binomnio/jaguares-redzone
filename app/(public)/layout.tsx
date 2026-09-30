@@ -36,8 +36,8 @@ export default async function PublicLayout({ children }: { children: React.React
   const glowColor = teamData?.glow_color || primaryColor;       // Resplandor de tarjetas
   const buttonColor = teamData?.button_color || primaryColor;   // Botones principales
 
-  const logoUrl = teamData?.logo_url || 'https://bnsports.com.mx/logos/halcones.png';
-  const teamName = teamData?.team_name || 'Halcones Rojos';
+  const logoUrl = teamData?.logo_url || 'https://bnsports.com.mx/logos/jaguaresp.png';
+  const teamName = teamData?.team_name || 'Jaguares';
 
   return (
     <div className="min-h-screen flex flex-col relative bg-[#f8fafc] text-gray-800 pt-16">
