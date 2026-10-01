@@ -22,8 +22,8 @@ export default function Footer({ teamName }: { teamLogo?: string, teamName?: str
         
         {/* Créditos */}
         <div className="text-center">
-          <p className="text-[10px] font-black uppercase tracking-widest text-white/80 mb-1">
-            Plataforma desarrollada por BN Sports y binomio Agency
+          <p className="text-[8px] font-black uppercase tracking-widest text-white/80 mb-1">
+            Desarrollada para BN Sports y Jaguares Puebla
           </p>
           <p className="text-[10px] font-medium text-white/60">
             © {new Date().getFullYear()} binomio Agency. Todos los derechos reservados.
