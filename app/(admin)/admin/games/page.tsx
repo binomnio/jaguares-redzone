@@ -19,18 +19,20 @@ export default async function AdminGamesPage() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-black uppercase italic">Gestión de Partidos</h2>
+      <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between sm:items-center mb-6 md:mb-8">
+        <h2 className="text-2xl md:text-3xl font-black uppercase italic">Gestión de Partidos</h2>
         <Link 
           href="/admin/games/new" 
-          className="bg-team-primary hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors text-sm uppercase"
+          className="inline-flex min-h-11 items-center justify-center w-full sm:w-auto shrink-0 bg-team-primary hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors text-sm uppercase"
         >
           + Nuevo Partido
         </Link>
       </div>
 
-      <div className="bg-black border border-gray-800 rounded-xl overflow-hidden shadow-lg">
-        <table className="w-full text-left border-collapse">
+      <p className="mb-3 text-xs text-gray-400 md:hidden">Desliza la tabla para ver todas las columnas.</p>
+
+      <div tabIndex={0} role="region" aria-label="Listado de partidos" className="bg-black border border-gray-800 rounded-xl overflow-x-auto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-team-primary shadow-lg">
+        <table className="w-full min-w-[720px] text-left border-collapse">
           <thead>
             <tr className="bg-gray-900 text-gray-400 text-xs uppercase tracking-wider">
               <th className="p-4 border-b border-gray-800">Fecha</th>
@@ -65,7 +67,7 @@ export default async function AdminGamesPage() {
                   {game.status === 'final' ? `${game.our_score} - ${game.opponent_score}` : '-'}
                 </td>
                 <td className="p-4">
-                  <Link href={`/admin/games/${game.id}`} className="text-blue-400 hover:text-blue-300 text-xs font-bold uppercase">
+                  <Link href={`/admin/games/${game.id}`} className="inline-flex min-h-11 items-center px-3 md:px-0 md:min-h-0 text-blue-400 hover:text-blue-300 text-xs font-bold uppercase">
                     Editar
                   </Link>
                 </td>

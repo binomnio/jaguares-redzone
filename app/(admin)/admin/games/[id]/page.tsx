@@ -27,11 +27,11 @@ export default async function EditGamePage({ params }: { params: Promise<{ id: s
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="flex items-center gap-4 mb-8">
-        <Link href="/admin/games" className="text-gray-400 hover:text-white transition-colors">
+      <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4 mb-6 md:mb-8">
+        <Link href="/admin/games" className="inline-flex min-h-11 items-center shrink-0 text-gray-400 hover:text-white transition-colors">
           ← Volver
         </Link>
-        <h2 className="text-3xl font-black uppercase italic">
+        <h2 className="text-2xl md:text-3xl font-black uppercase italic">
           Editar <span className="text-team-primary">Partido</span>
         </h2>
       </div>

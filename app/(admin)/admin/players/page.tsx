@@ -15,20 +15,22 @@ export default async function AdminPlayersPage() {
 
   return (
     <div className="max-w-5xl mx-auto">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-3xl font-black uppercase italic">
+      <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between sm:items-center mb-6 md:mb-8">
+        <h2 className="text-2xl md:text-3xl font-black uppercase italic">
           Gestión de <span className="text-team-primary">Roster</span>
         </h2>
         <Link 
           href="/admin/players/new" 
-          className="bg-team-primary hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg uppercase tracking-wider text-sm transition-colors"
+          className="inline-flex min-h-11 items-center justify-center w-full sm:w-auto shrink-0 bg-team-primary hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg uppercase tracking-wider text-sm transition-colors"
         >
           + Agregar Jugador
         </Link>
       </div>
 
-      <div className="bg-black border border-gray-800 rounded-xl overflow-hidden">
-        <table className="w-full text-left text-sm">
+      <p className="mb-3 text-xs text-gray-400 md:hidden">Desliza la tabla para ver todas las columnas.</p>
+
+      <div tabIndex={0} role="region" aria-label="Listado de jugadores" className="bg-black border border-gray-800 rounded-xl overflow-x-auto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-team-primary">
+        <table className="w-full min-w-[720px] text-left text-sm">
           <thead className="bg-gray-900 text-gray-400 uppercase text-xs">
             <tr>
               <th className="p-4">#</th>
@@ -68,7 +70,7 @@ export default async function AdminPlayersPage() {
                 <td className="p-4 text-right">
                   <Link 
                     href={`/admin/players/${player.id}`}
-                    className="text-team-primary hover:text-white uppercase text-xs font-bold tracking-widest transition-colors"
+                    className="inline-flex min-h-11 items-center px-3 md:px-0 md:min-h-0 text-team-primary hover:text-white uppercase text-xs font-bold tracking-widest transition-colors"
                   >
                     Editar
                   </Link>
