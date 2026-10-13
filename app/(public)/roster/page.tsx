@@ -1,3 +1,4 @@
+import { PLAYER_FIELDS } from '@/utils/public-data';
 // app/(public)/roster/page.tsx
 import { createClient } from '@/utils/supabase/server';
 import PlayerCard from '@/components/PlayerCard';
@@ -9,24 +10,24 @@ export default async function RosterPage() {
   const supabase = await createClient();
 
   // Traer datos del equipo
-  const { data: teamData } = await supabase
-    .from('team_settings')
-    .select('*') 
-    .limit(1)
-    .maybeSingle();
+  const [{ data: teamData }, { data: players }] = await Promise.all([
+    supabase
+      .from('team_settings')
+      .select('*')
+      .limit(1)
+      .maybeSingle(),
+    supabase
+      .from('players')
+      .select(PLAYER_FIELDS)
+      .eq('active', true)
+      // Ordenamos primero por jersey, que es lo más común en listas de fútbol americano
+      .order('jersey_number', { ascending: true })
+      .order('last_name', { ascending: true }),
+  ]);
 
   const teamName = teamData?.team_name || "Halcones";
   const logoUrl = teamData?.logo_url || "https://bnsports.com.mx/logos/halcones.png";
   const bgUrl = teamData?.header_bg_url; 
-
-  // Traer a todos los jugadores activos
-  const { data: players } = await supabase
-    .from('players')
-    .select('*')
-    .eq('active', true)
-    // Ordenamos primero por jersey, que es lo más común en listas de fútbol americano
-    .order('jersey_number', { ascending: true })
-    .order('last_name', { ascending: true });
 
   return (
     // Cambiamos el fondo a #f8fafc para que sea idéntico al Home

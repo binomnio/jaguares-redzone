@@ -1,3 +1,4 @@
+import { STANDING_FIELDS } from '@/utils/public-data';
 // app/(public)/posiciones/page.tsx
 import { createClient } from '@/utils/supabase/server';
 import InnerHeader from '@/components/InnerHeader';
@@ -8,8 +9,10 @@ export const revalidate = 60;
 export default async function PosicionesPage() {
   const supabase = await createClient();
 
-  const { data: teamData } = await supabase.from('team_settings').select('*').limit(1).maybeSingle();
-  const { data: standings } = await supabase.from('standings').select('*').order('position', { ascending: true });
+  const [{ data: teamData }, { data: standings }] = await Promise.all([
+    supabase.from('team_settings').select('*').limit(1).maybeSingle(),
+    supabase.from('standings').select(STANDING_FIELDS).order('position', { ascending: true }),
+  ]);
 
   const logoUrl = teamData?.logo_url || "https://bnsports.com.mx/logos/halcones.png";
   const bgUrl = teamData?.header_bg_url; 
@@ -60,7 +63,7 @@ export default async function PosicionesPage() {
                     <td className="p-3 md:p-5 font-black text-gray-800 flex items-center gap-2 md:gap-4">
                       {team.logo_url && (
                         <div className="w-6 h-6 md:w-8 md:h-8 relative flex-shrink-0">
-                          <Image src={team.logo_url} alt={team.team_name} fill className="object-contain drop-shadow-sm"/>
+                          <Image src={team.logo_url} alt={team.team_name} fill sizes="(min-width: 768px) 32px, 24px" className="object-contain drop-shadow-sm"/>
                         </div>
                       )}
                       <span className="truncate max-w-[120px] sm:max-w-[150px] md:max-w-full block md:hidden">{team.short_name || team.team_name}</span>

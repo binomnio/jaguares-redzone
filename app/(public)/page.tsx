@@ -1,3 +1,4 @@
+import { loadHomeData } from '@/utils/public-data';
 // app/(public)/page.tsx
 import NextGameHero from '@/components/NextGameHero';
 import PlayerCard from '@/components/PlayerCard'; 
@@ -33,19 +34,13 @@ export default async function HomePage() {
   const supabase = await createClient();
 
   // Datos del Equipo
-  const { data: teamData } = await supabase.from('team_settings').select('*').limit(1).maybeSingle();
+  const [{ data: teamData }, { data: allGames }, { data: standings }, { data: allPlayers }] = await loadHomeData(supabase);
   const teamName = teamData?.team_name || "Jaguares";
   const teamShortName = teamData?.short_name || "JAG";
   const teamRecord = teamData?.current_record || "0-0";
   const teamLogo = teamData?.logo_url || "https://bnsports.com.mx/logos/jaguaresp.png";
   const heroBackground = teamData?.header_bg_url || "https://bnsports.com.mx/img/jaguares-back.jpg"; 
 
-  // Listas
-  const { data: nextGame } = await supabase.from('games').select('*').eq('status', 'upcoming').order('game_date', { ascending: true }).limit(1).maybeSingle();
-  const { data: allGames } = await supabase.from('games').select('*').order('game_date', { ascending: true });
-  const { data: standings } = await supabase.from('standings').select('*').order('position', { ascending: true });
-  
-  const { data: allPlayers } = await supabase.from('players').select('*').eq('active', true).order('jersey_number', { ascending: true });
   const featuredPlayers = allPlayers?.filter(p => p.is_featured).slice(0, 4);
   const rosterPreview = allPlayers?.slice(0, 5);
 
@@ -55,14 +50,14 @@ export default async function HomePage() {
 {/* 1. HERO CON DEGRADADO SUAVIZADO Y ORGÁNICO */}
       <section className="relative w-full overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src={heroBackground} alt="Fondo" fill className="object-cover object-top opacity-20 mix-blend-multiply" priority />
+          <Image src={heroBackground} alt="Fondo" fill sizes="100vw" className="object-cover object-top opacity-20 mix-blend-multiply" priority />
           {/* Degradado ajustado para una transición fluida */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-team-bg/20 to-[#f8fafc]"></div>
         </div>
         
         <div className="pt-12 pb-12 px-4 text-center max-w-3xl mx-auto relative z-10">
           <div className="w-24 h-24 md:w-32 md:h-32 mx-auto relative mb-6">
-            <Image src={teamLogo} alt={`Logo ${teamName}`} fill className="object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]" priority />
+            <Image src={teamLogo} alt={`Logo ${teamName}`} fill sizes="(min-width: 768px) 128px, 96px" className="object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]" priority />
           </div>
           <h1 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 drop-shadow-md">
             Somos Garra, Somos Orgullo, Somos <span className="text-[#b21321]"> Jaguares</span>
@@ -93,7 +88,8 @@ export default async function HomePage() {
               <Image 
                 src="https://bnsports.com.mx/logos/fademac.png" 
                 alt="Logo Liga Fademac" 
-                fill 
+                fill
+                sizes="64px"
                 className="object-contain" 
               />
             </div>
@@ -149,7 +145,7 @@ export default async function HomePage() {
 
                       <div className="flex w-full items-center justify-between px-5 py-4 min-h-[110px]">
                         <div className="flex flex-col items-center w-1/3">
-                          <div className="w-12 h-12 md:w-16 md:h-16 relative mb-1 group-hover:scale-105 transition-transform"><Image src={homeLogo} alt={homeShort} fill className="object-contain" /></div>
+                          <div className="w-12 h-12 md:w-16 md:h-16 relative mb-1 group-hover:scale-105 transition-transform"><Image src={homeLogo} alt={homeShort} fill sizes="(min-width: 768px) 64px, 48px" className="object-contain" /></div>
                           <span className="text-sm md:text-base font-black text-gray-800 uppercase tracking-tight">{homeShort}</span>
                           <span className="text-[9px] text-gray-400 font-bold tracking-widest">{homeRecord}</span>
                         </div>
@@ -170,7 +166,7 @@ export default async function HomePage() {
                         </div>
 
                         <div className="flex flex-col items-center w-1/3">
-                          <div className="w-12 h-12 md:w-16 md:h-16 relative mb-1 group-hover:scale-105 transition-transform"><Image src={awayLogo} alt={awayShort} fill className="object-contain" /></div>
+                          <div className="w-12 h-12 md:w-16 md:h-16 relative mb-1 group-hover:scale-105 transition-transform"><Image src={awayLogo} alt={awayShort} fill sizes="(min-width: 768px) 64px, 48px" className="object-contain" /></div>
                           <span className="text-sm md:text-base font-black text-gray-800 uppercase tracking-tight">{awayShort}</span>
                           <span className="text-[9px] text-gray-400 font-bold tracking-widest">{awayRecord}</span>
                         </div>
@@ -237,7 +233,7 @@ export default async function HomePage() {
                         <tr key={team.id} className={`transition-colors hover:bg-white/50 ${team.team_name === teamName ? 'bg-team-primary/5' : ''}`}>
                           <td className="p-3 md:p-4 text-center font-black text-gray-400">{team.position}</td>
                           <td className="p-3 md:p-4 font-black text-gray-800 flex items-center gap-2 md:gap-3">
-                            {team.logo_url && <div className="w-5 h-5 md:w-6 md:h-6 relative"><Image src={team.logo_url} alt={team.team_name} fill className="object-contain"/></div>}
+                            {team.logo_url && <div className="w-5 h-5 md:w-6 md:h-6 relative"><Image src={team.logo_url} alt={team.team_name} fill sizes="(min-width: 768px) 24px, 20px" className="object-contain"/></div>}
                             <span className="truncate max-w-[120px]">{team.short_name || team.team_name}</span>
                           </td>
                           <td className="p-3 md:p-4 text-center font-black text-team-text">{team.wins}</td>
@@ -269,7 +265,7 @@ export default async function HomePage() {
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-100 relative border border-gray-200">
                           {player.photo_url ? (
-                            <Image src={player.photo_url} alt={player.first_name} fill className="object-cover" />
+                            <Image src={player.photo_url} alt={player.first_name} fill sizes="40px" className="object-cover" />
                           ) : (
                             <span className="w-full h-full flex items-center justify-center text-xs font-black text-gray-400">{player.jersey_number}</span>
                           )}
@@ -302,7 +298,7 @@ export default async function HomePage() {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {featuredPlayers.map((player) => (
-                <PlayerCard key={player.id} player={player} />
+                <PlayerCard key={player.id} player={player} sizes="(min-width: 1280px) 294px, (min-width: 1024px) calc((100vw - 104px) / 4), (min-width: 768px) calc((100vw - 80px) / 3), (min-width: 640px) calc((100vw - 64px) / 3), calc((100vw - 48px) / 2)" />
               ))}
             </div>
           </div>
