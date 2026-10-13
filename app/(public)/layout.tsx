@@ -1,3 +1,4 @@
+import { safeColor } from '@/utils/security';
 // app/(public)/layout.tsx
 import { createClient } from '@/utils/supabase/server';
 import Navbar from '@/components/Navbar';
@@ -26,15 +27,15 @@ export default async function PublicLayout({ children }: { children: React.React
   const { data: teamData } = await supabase.from('team_settings').select('*').limit(1).maybeSingle();
 
   // Colores Base
-  const primaryColor = teamData?.primary_color || '#dc2626';
-  const secondaryColor = teamData?.secondary_color || '#111827';
+  const primaryColor = safeColor(teamData?.primary_color, '#dc2626');
+  const secondaryColor = safeColor(teamData?.secondary_color, '#111827');
   
   // NUEVOS TOKENS SEMÁNTICOS (con fallbacks inteligentes por si están vacíos en BD)
-  const layoutColor = teamData?.layout_color || secondaryColor; // Navbar/Footer (Suele ser oscuro)
-  const bgColor = teamData?.bg_color || primaryColor;           // Fondos como InnerHeader
-  const textColor = teamData?.text_color || primaryColor;       // Countdown, textos resaltados
-  const glowColor = teamData?.glow_color || primaryColor;       // Resplandor de tarjetas
-  const buttonColor = teamData?.button_color || primaryColor;   // Botones principales
+  const layoutColor = safeColor(teamData?.layout_color, secondaryColor); // Navbar/Footer (Suele ser oscuro)
+  const bgColor = safeColor(teamData?.bg_color, primaryColor);           // Fondos como InnerHeader
+  const textColor = safeColor(teamData?.text_color, primaryColor);       // Countdown, textos resaltados
+  const glowColor = safeColor(teamData?.glow_color, primaryColor);       // Resplandor de tarjetas
+  const buttonColor = safeColor(teamData?.button_color, primaryColor);   // Botones principales
 
   const logoUrl = teamData?.logo_url || 'https://bnsports.com.mx/logos/jaguaresp.png';
   const teamName = teamData?.team_name || 'Jaguares';

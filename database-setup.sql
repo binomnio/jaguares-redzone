@@ -92,24 +92,24 @@ CREATE POLICY "Lectura publica players" ON public.players FOR SELECT USING (true
 
 -- 5. POLÍTICAS DE ESCRITURA (Solo tú o tu cliente desde el panel admin)
 -- Para team_settings
-CREATE POLICY "Escribir team_settings" ON public.team_settings FOR INSERT TO authenticated WITH CHECK (true);
-CREATE POLICY "Actualizar team_settings" ON public.team_settings FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
-CREATE POLICY "Borrar team_settings" ON public.team_settings FOR DELETE TO authenticated USING (true);
+CREATE POLICY "Escribir team_settings" ON public.team_settings FOR INSERT TO authenticated WITH CHECK ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+CREATE POLICY "Actualizar team_settings" ON public.team_settings FOR UPDATE TO authenticated USING ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin') WITH CHECK ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+CREATE POLICY "Borrar team_settings" ON public.team_settings FOR DELETE TO authenticated USING ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
 
 -- Para games
-CREATE POLICY "Escribir games" ON public.games FOR INSERT TO authenticated WITH CHECK (true);
-CREATE POLICY "Actualizar games" ON public.games FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
-CREATE POLICY "Borrar games" ON public.games FOR DELETE TO authenticated USING (true);
+CREATE POLICY "Escribir games" ON public.games FOR INSERT TO authenticated WITH CHECK ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+CREATE POLICY "Actualizar games" ON public.games FOR UPDATE TO authenticated USING ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin') WITH CHECK ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+CREATE POLICY "Borrar games" ON public.games FOR DELETE TO authenticated USING ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
 
 -- Para standings
-CREATE POLICY "Escribir standings" ON public.standings FOR INSERT TO authenticated WITH CHECK (true);
-CREATE POLICY "Actualizar standings" ON public.standings FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
-CREATE POLICY "Borrar standings" ON public.standings FOR DELETE TO authenticated USING (true);
+CREATE POLICY "Escribir standings" ON public.standings FOR INSERT TO authenticated WITH CHECK ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+CREATE POLICY "Actualizar standings" ON public.standings FOR UPDATE TO authenticated USING ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin') WITH CHECK ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+CREATE POLICY "Borrar standings" ON public.standings FOR DELETE TO authenticated USING ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
 
 -- Para players
-CREATE POLICY "Escribir players" ON public.players FOR INSERT TO authenticated WITH CHECK (true);
-CREATE POLICY "Actualizar players" ON public.players FOR UPDATE TO authenticated USING (true) WITH CHECK (true);
-CREATE POLICY "Borrar players" ON public.players FOR DELETE TO authenticated USING (true);
+CREATE POLICY "Escribir players" ON public.players FOR INSERT TO authenticated WITH CHECK ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+CREATE POLICY "Actualizar players" ON public.players FOR UPDATE TO authenticated USING ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin') WITH CHECK ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+CREATE POLICY "Borrar players" ON public.players FOR DELETE TO authenticated USING ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
 
 -- 6. REGISTRO SEMILLA (Previene el error de actualización la primera vez)
 INSERT INTO public.team_settings (team_name, short_name, primary_color, secondary_color) 

@@ -1,3 +1,4 @@
+import { isAdmin } from '@/utils/security';
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
@@ -39,7 +40,7 @@ export async function middleware(request: NextRequest) {
 
   // Proteger las rutas que empiezan con /admin (excepto el login)
   if (request.nextUrl.pathname.startsWith('/admin') && !request.nextUrl.pathname.startsWith('/login')) {
-    if (!user) {
+    if (!isAdmin(user)) {
       // Si no hay usuario, redirigir al login
       const url = request.nextUrl.clone()
       url.pathname = '/login'

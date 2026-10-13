@@ -1,3 +1,4 @@
+import { safeColor, isAdmin } from '@/utils/security';
 // app/(admin)/layout.tsx
 import { createClient } from '@/utils/supabase/server';
 import Link from 'next/link';
@@ -6,17 +7,17 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   const supabase = await createClient();
 
   // 1. Verificar si hay una sesión activa
-  const { data: { session } } = await supabase.auth.getSession();
+  const { data: { user } } = await supabase.auth.getUser();
 
   // Traer los colores del equipo (solo los necesitamos para las variables CSS)
   const { data: teamData } = await supabase.from('team_settings').select('*').limit(1).maybeSingle();
   
-  const primaryColor = teamData?.primary_color || '#dc2626';
-  const secondaryColor = teamData?.secondary_color || '#111827';
+  const primaryColor = safeColor(teamData?.primary_color, '#dc2626');
+  const secondaryColor = safeColor(teamData?.secondary_color, '#111827');
   const logoUrl = teamData?.logo_url || '/default-logo.png';
 
   // 2. Si NO hay sesión, devolvemos solo el contenido (la página de login) sin el Sidebar
-  if (!session) {
+  if (!isAdmin(user)) {
     return (
       <>
         {/* Mantenemos las variables CSS para que el login pueda usar los colores del equipo */}
