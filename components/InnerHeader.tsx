@@ -19,7 +19,8 @@ export default function InnerHeader({ title, subtitle, logoUrl, bgUrl }: InnerHe
         {/* Bajamos un puntito la opacidad (40%) para que el color se funda mejor con la foto */}
         <Image 
           src={bgUrl || defaultBg} 
-          fill 
+          fill
+          sizes="100vw"
           alt="Background" 
           className="object-cover object-top opacity-40 mix-blend-multiply"
           priority
@@ -39,7 +40,8 @@ export default function InnerHeader({ title, subtitle, logoUrl, bgUrl }: InnerHe
           <Image 
             src={logoUrl} 
             alt="Logo" 
-            fill 
+            fill
+            sizes="(min-width: 768px) 80px, 64px"
             className="object-contain drop-shadow-[0_8px_15px_rgba(0,0,0,0.6)]" 
             priority
           />

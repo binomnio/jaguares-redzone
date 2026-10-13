@@ -15,7 +15,8 @@ export default function Footer({ teamName }: { teamLogo?: string, teamName?: str
           <Image 
             src={agencyLogo} 
             alt="binomio Technology / BN Sports" 
-            fill 
+            fill
+            sizes="192px"
             className="object-contain filter brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" 
           />
         </div>

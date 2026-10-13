@@ -1,3 +1,4 @@
+import { GAME_FIELDS } from '@/utils/public-data';
 // app/(public)/calendario/page.tsx
 import { createClient } from '@/utils/supabase/server';
 import Image from 'next/image';
@@ -18,21 +19,22 @@ export default async function CalendarioPage() {
   const supabase = await createClient();
 
   // Traer la identidad del equipo
-  const { data: teamData } = await supabase
-    .from('team_settings')
-    .select('*')
-    .limit(1)
-    .maybeSingle();
+  const [{ data: teamData }, { data: allGames }] = await Promise.all([
+    supabase
+      .from('team_settings')
+      .select('*')
+      .limit(1)
+      .maybeSingle(),
+    supabase
+      .from('games')
+      .select(GAME_FIELDS)
+      .order('game_date', { ascending: true }),
+  ]);
 
   const teamName = teamData?.team_name || "Halcones";
   const teamShortName = teamData?.short_name || "HAL";
   const teamLogo = teamData?.logo_url || "https://bnsports.com.mx/logos/halcones.png";
   const bgUrl = teamData?.header_bg_url; 
-
-  const { data: allGames } = await supabase
-    .from('games')
-    .select('*')
-    .order('game_date', { ascending: true });
 
   return (
     // Fondo homologado con Home y Roster
@@ -95,7 +97,7 @@ export default async function CalendarioPage() {
                   {/* Local */}
                   <div className="flex flex-col items-center w-1/3">
                     <div className="w-16 h-16 md:w-24 md:h-24 relative mb-2 group-hover:scale-105 transition-transform">
-                      <Image src={homeLogo} alt={homeShort} fill className={`object-contain ${isFinal && !homeWon && !isTie ? 'opacity-60 grayscale' : 'drop-shadow-lg'}`} />
+                      <Image src={homeLogo} alt={homeShort} fill sizes="(min-width: 768px) 96px, 64px" className={`object-contain ${isFinal && !homeWon && !isTie ? 'opacity-60 grayscale' : 'drop-shadow-lg'}`} />
                     </div>
                     <span className="text-sm md:text-lg font-black text-gray-800 uppercase tracking-tight">{homeShort}</span>
                   </div>
@@ -116,7 +118,7 @@ export default async function CalendarioPage() {
                   {/* Visita */}
                   <div className="flex flex-col items-center w-1/3">
                     <div className="w-16 h-16 md:w-24 md:h-24 relative mb-2 group-hover:scale-105 transition-transform">
-                      <Image src={awayLogo} alt={awayShort} fill className={`object-contain ${isFinal && !awayWon && !isTie ? 'opacity-60 grayscale' : 'drop-shadow-lg'}`} />
+                      <Image src={awayLogo} alt={awayShort} fill sizes="(min-width: 768px) 96px, 64px" className={`object-contain ${isFinal && !awayWon && !isTie ? 'opacity-60 grayscale' : 'drop-shadow-lg'}`} />
                     </div>
                     <span className="text-sm md:text-lg font-black text-gray-800 uppercase tracking-tight">{awayShort}</span>
                   </div>

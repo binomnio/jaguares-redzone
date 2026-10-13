@@ -1,0 +1,2160 @@
+{
+  "before": {
+    "lighthouse": [
+      {
+        "path": "/",
+        "mode": "mobile",
+        "score": 97,
+        "fcp": 912.5781999999999,
+        "lcp": 2501.3485,
+        "cls": 0.0009189601129505162,
+        "tbt": 36.5,
+        "bytes": 246624,
+        "server": 445,
+        "scriptBytes": 150359,
+        "imageFailures": 12,
+        "scoreRange": [
+          97,
+          100
+        ]
+      },
+      {
+        "path": "/",
+        "mode": "desktop",
+        "score": 100,
+        "fcp": 254.0784,
+        "lcp": 544.0784000000001,
+        "cls": 0.001032058637258053,
+        "tbt": 0,
+        "bytes": 247435,
+        "server": 623,
+        "scriptBytes": 150359,
+        "imageFailures": 11,
+        "scoreRange": [
+          100,
+          100
+        ]
+      },
+      {
+        "path": "/calendario",
+        "mode": "mobile",
+        "score": 98,
+        "fcp": 767.3297,
+        "lcp": 2287.162125,
+        "cls": 0,
+        "tbt": 45,
+        "bytes": 239660,
+        "server": 195,
+        "scriptBytes": 146984,
+        "imageFailures": 11,
+        "scoreRange": [
+          98,
+          100
+        ]
+      },
+      {
+        "path": "/calendario",
+        "mode": "desktop",
+        "score": 100,
+        "fcp": 214.39049999999997,
+        "lcp": 550.9515,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 239560,
+        "server": 218,
+        "scriptBytes": 146984,
+        "imageFailures": 10,
+        "scoreRange": [
+          100,
+          100
+        ]
+      },
+      {
+        "path": "/roster",
+        "mode": "mobile",
+        "score": 100,
+        "fcp": 761.4582,
+        "lcp": 1811.1475500000001,
+        "cls": 0,
+        "tbt": 42.5,
+        "bytes": 235422,
+        "server": 267,
+        "scriptBytes": 146984,
+        "imageFailures": 3,
+        "scoreRange": [
+          98,
+          100
+        ]
+      },
+      {
+        "path": "/roster",
+        "mode": "desktop",
+        "score": 100,
+        "fcp": 209.7593,
+        "lcp": 528.2986000000001,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 236343,
+        "server": 196,
+        "scriptBytes": 146984,
+        "imageFailures": 3,
+        "scoreRange": [
+          100,
+          100
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "mode": "mobile",
+        "score": 100,
+        "fcp": 762.4228,
+        "lcp": 1670.145,
+        "cls": 0,
+        "tbt": 41.5,
+        "bytes": 239227,
+        "server": 203,
+        "scriptBytes": 146984,
+        "imageFailures": 8,
+        "scoreRange": [
+          99,
+          100
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "mode": "desktop",
+        "score": 100,
+        "fcp": 210.9873,
+        "lcp": 531.9873,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 237838,
+        "server": 254,
+        "scriptBytes": 146984,
+        "imageFailures": 8,
+        "scoreRange": [
+          100,
+          100
+        ]
+      }
+    ],
+    "server": [
+      {
+        "path": "/",
+        "ms": 340.41382049999993,
+        "htmlBytes": 127728,
+        "queryCounts": [
+          5
+        ],
+        "cacheControl": [
+          "private, no-cache, no-store, max-age=0, must-revalidate"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "ms": 129.60414800000035,
+        "htmlBytes": 92175,
+        "queryCounts": [
+          2
+        ],
+        "cacheControl": [
+          "private, no-cache, no-store, max-age=0, must-revalidate"
+        ]
+      },
+      {
+        "path": "/roster",
+        "ms": 125.23806400000012,
+        "htmlBytes": 28781,
+        "queryCounts": [
+          2
+        ],
+        "cacheControl": [
+          "private, no-cache, no-store, max-age=0, must-revalidate"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "ms": 139.46109899999965,
+        "htmlBytes": 54996,
+        "queryCounts": [
+          2
+        ],
+        "cacheControl": [
+          "private, no-cache, no-store, max-age=0, must-revalidate"
+        ]
+      }
+    ],
+    "lighthouseSamples": [
+      {
+        "path": "/",
+        "mode": "mobile",
+        "run": 1,
+        "score": 97,
+        "fcp": 941.3485000000001,
+        "lcp": 2501.3485,
+        "cls": 0.0009189601129505162,
+        "tbt": 58,
+        "bytes": 246491,
+        "server": 395,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150359,
+        "imageFailures": 11
+      },
+      {
+        "path": "/",
+        "mode": "mobile",
+        "run": 2,
+        "score": 100,
+        "fcp": 911.0419999999999,
+        "lcp": 1927.042,
+        "cls": 0.0009189601129505162,
+        "tbt": 36.5,
+        "bytes": 246624,
+        "server": 638,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150359,
+        "imageFailures": 12
+      },
+      {
+        "path": "/",
+        "mode": "mobile",
+        "run": 3,
+        "score": 97,
+        "fcp": 912.5781999999999,
+        "lcp": 2534.5782,
+        "cls": 0.0009189601129505162,
+        "tbt": 36,
+        "bytes": 247552,
+        "server": 445,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150359,
+        "imageFailures": 12
+      },
+      {
+        "path": "/",
+        "mode": "desktop",
+        "run": 1,
+        "score": 100,
+        "fcp": 258.9742,
+        "lcp": 550.9742,
+        "cls": 0.001032058637258053,
+        "tbt": 0,
+        "bytes": 247435,
+        "server": 623,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150359,
+        "imageFailures": 11
+      },
+      {
+        "path": "/",
+        "mode": "desktop",
+        "run": 2,
+        "score": 100,
+        "fcp": 254.0784,
+        "lcp": 544.0784000000001,
+        "cls": 0.001032058637258053,
+        "tbt": 0,
+        "bytes": 248258,
+        "server": 690,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150359,
+        "imageFailures": 11
+      },
+      {
+        "path": "/",
+        "mode": "desktop",
+        "run": 3,
+        "score": 100,
+        "fcp": 251.55399999999997,
+        "lcp": 538.5540000000001,
+        "cls": 0.001032058637258053,
+        "tbt": 0,
+        "bytes": 246908,
+        "server": 402,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150359,
+        "imageFailures": 11
+      },
+      {
+        "path": "/calendario",
+        "mode": "mobile",
+        "run": 1,
+        "score": 98,
+        "fcp": 768.9909,
+        "lcp": 2338.738625,
+        "cls": 0,
+        "tbt": 45,
+        "bytes": 239262,
+        "server": 195,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 11
+      },
+      {
+        "path": "/calendario",
+        "mode": "mobile",
+        "run": 2,
+        "score": 100,
+        "fcp": 761.1875,
+        "lcp": 1553.1875,
+        "cls": 0,
+        "tbt": 44.5,
+        "bytes": 240585,
+        "server": 174,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 10
+      },
+      {
+        "path": "/calendario",
+        "mode": "mobile",
+        "run": 3,
+        "score": 98,
+        "fcp": 767.3297,
+        "lcp": 2287.162125,
+        "cls": 0,
+        "tbt": 47.5,
+        "bytes": 239660,
+        "server": 255,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 11
+      },
+      {
+        "path": "/calendario",
+        "mode": "desktop",
+        "run": 1,
+        "score": 100,
+        "fcp": 226.9515,
+        "lcp": 550.9515,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 241047,
+        "server": 198,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 10
+      },
+      {
+        "path": "/calendario",
+        "mode": "desktop",
+        "run": 2,
+        "score": 100,
+        "fcp": 212.40269999999998,
+        "lcp": 546.503375,
+        "cls": 0,
+        "tbt": 0.5,
+        "bytes": 239560,
+        "server": 218,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 11
+      },
+      {
+        "path": "/calendario",
+        "mode": "desktop",
+        "run": 3,
+        "score": 100,
+        "fcp": 214.39049999999997,
+        "lcp": 558.58575,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 239524,
+        "server": 351,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 10
+      },
+      {
+        "path": "/roster",
+        "mode": "mobile",
+        "run": 1,
+        "score": 98,
+        "fcp": 762.3701000000001,
+        "lcp": 2347.462625,
+        "cls": 0,
+        "tbt": 53.5,
+        "bytes": 235422,
+        "server": 267,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 4
+      },
+      {
+        "path": "/roster",
+        "mode": "mobile",
+        "run": 2,
+        "score": 100,
+        "fcp": 761.4582,
+        "lcp": 1739.32275,
+        "cls": 0,
+        "tbt": 42.5,
+        "bytes": 235703,
+        "server": 199,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 3
+      },
+      {
+        "path": "/roster",
+        "mode": "mobile",
+        "run": 3,
+        "score": 100,
+        "fcp": 757.4317000000001,
+        "lcp": 1811.1475500000001,
+        "cls": 0,
+        "tbt": 34.5,
+        "bytes": 235329,
+        "server": 286,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 3
+      },
+      {
+        "path": "/roster",
+        "mode": "desktop",
+        "run": 1,
+        "score": 100,
+        "fcp": 209.7593,
+        "lcp": 526.1991250000001,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 236343,
+        "server": 192,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 4
+      },
+      {
+        "path": "/roster",
+        "mode": "desktop",
+        "run": 2,
+        "score": 100,
+        "fcp": 211.29860000000002,
+        "lcp": 528.2986000000001,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 235586,
+        "server": 248,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 3
+      },
+      {
+        "path": "/roster",
+        "mode": "desktop",
+        "run": 3,
+        "score": 100,
+        "fcp": 208.23239999999998,
+        "lcp": 530.2324,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 237235,
+        "server": 196,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 3
+      },
+      {
+        "path": "/posiciones",
+        "mode": "mobile",
+        "run": 1,
+        "score": 100,
+        "fcp": 763.4300000000001,
+        "lcp": 1670.145,
+        "cls": 0,
+        "tbt": 42,
+        "bytes": 237052,
+        "server": 238,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 8
+      },
+      {
+        "path": "/posiciones",
+        "mode": "mobile",
+        "run": 2,
+        "score": 99,
+        "fcp": 760.422,
+        "lcp": 1960.422,
+        "cls": 0,
+        "tbt": 39.5,
+        "bytes": 239613,
+        "server": 203,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 8
+      },
+      {
+        "path": "/posiciones",
+        "mode": "mobile",
+        "run": 3,
+        "score": 100,
+        "fcp": 762.4228,
+        "lcp": 1662.4227999999998,
+        "cls": 0,
+        "tbt": 41.5,
+        "bytes": 239227,
+        "server": 175,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 8
+      },
+      {
+        "path": "/posiciones",
+        "mode": "desktop",
+        "run": 1,
+        "score": 100,
+        "fcp": 210.17630000000003,
+        "lcp": 524.1763000000001,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 239123,
+        "server": 191,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 8
+      },
+      {
+        "path": "/posiciones",
+        "mode": "desktop",
+        "run": 2,
+        "score": 100,
+        "fcp": 210.9873,
+        "lcp": 531.9873,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 237838,
+        "server": 254,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 8
+      },
+      {
+        "path": "/posiciones",
+        "mode": "desktop",
+        "run": 3,
+        "score": 100,
+        "fcp": 212.37990000000002,
+        "lcp": 533.5698500000001,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 237633,
+        "server": 362,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 8
+      }
+    ],
+    "httpSamples": [
+      {
+        "path": "/",
+        "run": 1,
+        "status": 200,
+        "ms": 393.08336499999996,
+        "htmlBytes": 127728,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games",
+          "games",
+          "standings",
+          "players"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 2,
+        "status": 200,
+        "ms": 428.459335,
+        "htmlBytes": 127728,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games",
+          "games",
+          "standings",
+          "players"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 3,
+        "status": 200,
+        "ms": 385.76861099999996,
+        "htmlBytes": 127728,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games",
+          "games",
+          "standings",
+          "players"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 4,
+        "status": 200,
+        "ms": 352.67847199999983,
+        "htmlBytes": 127728,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games",
+          "games",
+          "standings",
+          "players"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 5,
+        "status": 200,
+        "ms": 342.331412,
+        "htmlBytes": 127728,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games",
+          "games",
+          "standings",
+          "players"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 6,
+        "status": 200,
+        "ms": 338.49622899999986,
+        "htmlBytes": 127728,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games",
+          "games",
+          "standings",
+          "players"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 7,
+        "status": 200,
+        "ms": 325.70481199999995,
+        "htmlBytes": 127728,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games",
+          "games",
+          "standings",
+          "players"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 8,
+        "status": 200,
+        "ms": 289.19433200000003,
+        "htmlBytes": 127728,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games",
+          "games",
+          "standings",
+          "players"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 9,
+        "status": 200,
+        "ms": 332.5152670000002,
+        "htmlBytes": 127728,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games",
+          "games",
+          "standings",
+          "players"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 10,
+        "status": 200,
+        "ms": 291.20817000000034,
+        "htmlBytes": 127728,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games",
+          "games",
+          "standings",
+          "players"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 1,
+        "status": 200,
+        "ms": 135.82803700000022,
+        "htmlBytes": 92175,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 2,
+        "status": 200,
+        "ms": 131.36515600000075,
+        "htmlBytes": 92175,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 3,
+        "status": 200,
+        "ms": 125.94608900000003,
+        "htmlBytes": 92175,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 4,
+        "status": 200,
+        "ms": 131.61223599999994,
+        "htmlBytes": 92175,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 5,
+        "status": 200,
+        "ms": 131.73214499999995,
+        "htmlBytes": 92175,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 6,
+        "status": 200,
+        "ms": 174.56640999999945,
+        "htmlBytes": 92175,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 7,
+        "status": 200,
+        "ms": 127.84313999999995,
+        "htmlBytes": 92175,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 8,
+        "status": 200,
+        "ms": 116.57472700000017,
+        "htmlBytes": 92175,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 9,
+        "status": 200,
+        "ms": 122.95612100000017,
+        "htmlBytes": 92175,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 10,
+        "status": 200,
+        "ms": 120.29832699999952,
+        "htmlBytes": 92175,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 1,
+        "status": 200,
+        "ms": 132.67776099999992,
+        "htmlBytes": 28781,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 2,
+        "status": 200,
+        "ms": 109.4487909999998,
+        "htmlBytes": 28781,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 3,
+        "status": 200,
+        "ms": 118.05950100000064,
+        "htmlBytes": 28781,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 4,
+        "status": 200,
+        "ms": 135.02265200000056,
+        "htmlBytes": 28781,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 5,
+        "status": 200,
+        "ms": 129.68743600000016,
+        "htmlBytes": 28781,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 6,
+        "status": 200,
+        "ms": 119.04881399999977,
+        "htmlBytes": 28781,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 7,
+        "status": 200,
+        "ms": 134.26334900000074,
+        "htmlBytes": 28781,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 8,
+        "status": 200,
+        "ms": 120.78869200000008,
+        "htmlBytes": 28781,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 9,
+        "status": 200,
+        "ms": 115.047775,
+        "htmlBytes": 28781,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 10,
+        "status": 200,
+        "ms": 130.3560440000001,
+        "htmlBytes": 28781,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 1,
+        "status": 200,
+        "ms": 128.93003000000044,
+        "htmlBytes": 54996,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 2,
+        "status": 200,
+        "ms": 120.31368600000042,
+        "htmlBytes": 54996,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 3,
+        "status": 200,
+        "ms": 153.8075799999997,
+        "htmlBytes": 54996,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 4,
+        "status": 200,
+        "ms": 157.75566499999968,
+        "htmlBytes": 54996,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 5,
+        "status": 200,
+        "ms": 182.77873999999974,
+        "htmlBytes": 54996,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 6,
+        "status": 200,
+        "ms": 135.77163699999983,
+        "htmlBytes": 54996,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 7,
+        "status": 200,
+        "ms": 143.15056099999947,
+        "htmlBytes": 54996,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 8,
+        "status": 200,
+        "ms": 112.96746200000052,
+        "htmlBytes": 54996,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 9,
+        "status": 200,
+        "ms": 130.60267600000043,
+        "htmlBytes": 54996,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 10,
+        "status": 200,
+        "ms": 150.7997489999998,
+        "htmlBytes": 54996,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      }
+    ]
+  },
+  "after": {
+    "lighthouse": [
+      {
+        "path": "/",
+        "mode": "mobile",
+        "score": 97,
+        "fcp": 935.6736000000001,
+        "lcp": 2557.8431,
+        "cls": 0.0009189601129505162,
+        "tbt": 41.5,
+        "bytes": 247753,
+        "server": 143,
+        "scriptBytes": 150393,
+        "imageFailures": 21,
+        "scoreRange": [
+          86,
+          100
+        ]
+      },
+      {
+        "path": "/",
+        "mode": "desktop",
+        "score": 100,
+        "fcp": 285.3502,
+        "lcp": 600.7099000000001,
+        "cls": 0.001032058637258053,
+        "tbt": 0,
+        "bytes": 248899,
+        "server": 197,
+        "scriptBytes": 150393,
+        "imageFailures": 23,
+        "scoreRange": [
+          100,
+          100
+        ]
+      },
+      {
+        "path": "/calendario",
+        "mode": "mobile",
+        "score": 99,
+        "fcp": 760.3694,
+        "lcp": 2232.3694,
+        "cls": 0,
+        "tbt": 40,
+        "bytes": 242084,
+        "server": 136,
+        "scriptBytes": 146984,
+        "imageFailures": 11,
+        "scoreRange": [
+          98,
+          100
+        ]
+      },
+      {
+        "path": "/calendario",
+        "mode": "desktop",
+        "score": 100,
+        "fcp": 217.17380000000003,
+        "lcp": 536.7607,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 241189,
+        "server": 148,
+        "scriptBytes": 146984,
+        "imageFailures": 11,
+        "scoreRange": [
+          100,
+          100
+        ]
+      },
+      {
+        "path": "/roster",
+        "mode": "mobile",
+        "score": 98,
+        "fcp": 763.6470999999999,
+        "lcp": 2325.6657,
+        "cls": 0,
+        "tbt": 41.5,
+        "bytes": 235882,
+        "server": 106,
+        "scriptBytes": 146984,
+        "imageFailures": 4,
+        "scoreRange": [
+          98,
+          99
+        ]
+      },
+      {
+        "path": "/roster",
+        "mode": "desktop",
+        "score": 100,
+        "fcp": 211.33159999999998,
+        "lcp": 517.9103749999999,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 235763,
+        "server": 113,
+        "scriptBytes": 146984,
+        "imageFailures": 4,
+        "scoreRange": [
+          100,
+          100
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "mode": "mobile",
+        "score": 99,
+        "fcp": 766.8952999999999,
+        "lcp": 2248.5608,
+        "cls": 0,
+        "tbt": 45,
+        "bytes": 238122,
+        "server": 114,
+        "scriptBytes": 146984,
+        "imageFailures": 10,
+        "scoreRange": [
+          99,
+          100
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "mode": "desktop",
+        "score": 100,
+        "fcp": 215.4943,
+        "lcp": 525.5355,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 239489,
+        "server": 183,
+        "scriptBytes": 146984,
+        "imageFailures": 10,
+        "scoreRange": [
+          100,
+          100
+        ]
+      }
+    ],
+    "server": [
+      {
+        "path": "/",
+        "ms": 130.4948595,
+        "htmlBytes": 146181,
+        "queryCounts": [
+          4
+        ],
+        "cacheControl": [
+          "private, no-cache, no-store, max-age=0, must-revalidate"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "ms": 107.14353149999988,
+        "htmlBytes": 104543,
+        "queryCounts": [
+          2
+        ],
+        "cacheControl": [
+          "private, no-cache, no-store, max-age=0, must-revalidate"
+        ]
+      },
+      {
+        "path": "/roster",
+        "ms": 84.26534250000009,
+        "htmlBytes": 30923,
+        "queryCounts": [
+          2
+        ],
+        "cacheControl": [
+          "private, no-cache, no-store, max-age=0, must-revalidate"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "ms": 91.18115200000011,
+        "htmlBytes": 61455,
+        "queryCounts": [
+          2
+        ],
+        "cacheControl": [
+          "private, no-cache, no-store, max-age=0, must-revalidate"
+        ]
+      }
+    ],
+    "lighthouseSamples": [
+      {
+        "path": "/",
+        "mode": "mobile",
+        "run": 1,
+        "score": 97,
+        "fcp": 916.8431,
+        "lcp": 2557.8431,
+        "cls": 0.0009189601129505162,
+        "tbt": 45.5,
+        "bytes": 247190,
+        "server": 119,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150393,
+        "imageFailures": 21
+      },
+      {
+        "path": "/",
+        "mode": "mobile",
+        "run": 2,
+        "score": 86,
+        "fcp": 2082.7124,
+        "lcp": 3910.7123999999994,
+        "cls": 0.0009189601129505162,
+        "tbt": 41.5,
+        "bytes": 247989,
+        "server": 168,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150393,
+        "imageFailures": 21
+      },
+      {
+        "path": "/",
+        "mode": "mobile",
+        "run": 3,
+        "score": 100,
+        "fcp": 935.6736000000001,
+        "lcp": 1876.6736,
+        "cls": 0.0009189601129505162,
+        "tbt": 39.5,
+        "bytes": 247753,
+        "server": 143,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150393,
+        "imageFailures": 21
+      },
+      {
+        "path": "/",
+        "mode": "desktop",
+        "run": 1,
+        "score": 100,
+        "fcp": 285.7099,
+        "lcp": 600.7099000000001,
+        "cls": 0.001032058637258053,
+        "tbt": 0,
+        "bytes": 249536,
+        "server": 205,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150393,
+        "imageFailures": 21
+      },
+      {
+        "path": "/",
+        "mode": "desktop",
+        "run": 2,
+        "score": 100,
+        "fcp": 262.7495,
+        "lcp": 602.4368750000001,
+        "cls": 0.001032058637258053,
+        "tbt": 0,
+        "bytes": 248899,
+        "server": 197,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150393,
+        "imageFailures": 23
+      },
+      {
+        "path": "/",
+        "mode": "desktop",
+        "run": 3,
+        "score": 100,
+        "fcp": 285.3502,
+        "lcp": 576.9377499999999,
+        "cls": 0.001032058637258053,
+        "tbt": 0,
+        "bytes": 247656,
+        "server": 140,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 150393,
+        "imageFailures": 23
+      },
+      {
+        "path": "/calendario",
+        "mode": "mobile",
+        "run": 1,
+        "score": 98,
+        "fcp": 760.3133,
+        "lcp": 2320.891625,
+        "cls": 0,
+        "tbt": 41.5,
+        "bytes": 242084,
+        "server": 150,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 11
+      },
+      {
+        "path": "/calendario",
+        "mode": "mobile",
+        "run": 2,
+        "score": 100,
+        "fcp": 787.5963999999999,
+        "lcp": 1560.5964,
+        "cls": 0,
+        "tbt": 40,
+        "bytes": 242204,
+        "server": 95,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 11
+      },
+      {
+        "path": "/calendario",
+        "mode": "mobile",
+        "run": 3,
+        "score": 99,
+        "fcp": 760.3694,
+        "lcp": 2232.3694,
+        "cls": 0,
+        "tbt": 36,
+        "bytes": 241505,
+        "server": 136,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 11
+      },
+      {
+        "path": "/calendario",
+        "mode": "desktop",
+        "run": 1,
+        "score": 100,
+        "fcp": 210.45639999999997,
+        "lcp": 529.4564,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 241189,
+        "server": 93,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 11
+      },
+      {
+        "path": "/calendario",
+        "mode": "desktop",
+        "run": 2,
+        "score": 100,
+        "fcp": 218.0605,
+        "lcp": 558.0907500000001,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 241158,
+        "server": 149,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 11
+      },
+      {
+        "path": "/calendario",
+        "mode": "desktop",
+        "run": 3,
+        "score": 100,
+        "fcp": 217.17380000000003,
+        "lcp": 536.7607,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 241559,
+        "server": 148,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 11
+      },
+      {
+        "path": "/roster",
+        "mode": "mobile",
+        "run": 1,
+        "score": 98,
+        "fcp": 808.1610000000001,
+        "lcp": 2366.95125,
+        "cls": 0,
+        "tbt": 40.5,
+        "bytes": 235027,
+        "server": 106,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 4
+      },
+      {
+        "path": "/roster",
+        "mode": "mobile",
+        "run": 2,
+        "score": 99,
+        "fcp": 763.6470999999999,
+        "lcp": 2199.0588749999997,
+        "cls": 0,
+        "tbt": 41.5,
+        "bytes": 236496,
+        "server": 179,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 4
+      },
+      {
+        "path": "/roster",
+        "mode": "mobile",
+        "run": 3,
+        "score": 98,
+        "fcp": 758.6657,
+        "lcp": 2325.6657,
+        "cls": 0,
+        "tbt": 46,
+        "bytes": 235882,
+        "server": 103,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 4
+      },
+      {
+        "path": "/roster",
+        "mode": "desktop",
+        "run": 1,
+        "score": 100,
+        "fcp": 211.33159999999998,
+        "lcp": 513.6645,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 235763,
+        "server": 113,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 4
+      },
+      {
+        "path": "/roster",
+        "mode": "desktop",
+        "run": 2,
+        "score": 100,
+        "fcp": 205.9529,
+        "lcp": 519.92935,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 236723,
+        "server": 136,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 4
+      },
+      {
+        "path": "/roster",
+        "mode": "desktop",
+        "run": 3,
+        "score": 100,
+        "fcp": 214.3283,
+        "lcp": 517.9103749999999,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 235030,
+        "server": 99,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 4
+      },
+      {
+        "path": "/posiciones",
+        "mode": "mobile",
+        "run": 1,
+        "score": 100,
+        "fcp": 788.1277,
+        "lcp": 1673.409625,
+        "cls": 0,
+        "tbt": 47,
+        "bytes": 237896,
+        "server": 114,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 10
+      },
+      {
+        "path": "/posiciones",
+        "mode": "mobile",
+        "run": 2,
+        "score": 99,
+        "fcp": 762.5608,
+        "lcp": 2248.5608,
+        "cls": 0,
+        "tbt": 43,
+        "bytes": 238122,
+        "server": 116,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 10
+      },
+      {
+        "path": "/posiciones",
+        "mode": "mobile",
+        "run": 3,
+        "score": 99,
+        "fcp": 766.8952999999999,
+        "lcp": 2256.8953,
+        "cls": 0,
+        "tbt": 45,
+        "bytes": 238448,
+        "server": 88,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 10
+      },
+      {
+        "path": "/posiciones",
+        "mode": "desktop",
+        "run": 1,
+        "score": 100,
+        "fcp": 216.31889999999999,
+        "lcp": 521.3189,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 240098,
+        "server": 102,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 10
+      },
+      {
+        "path": "/posiciones",
+        "mode": "desktop",
+        "run": 2,
+        "score": 100,
+        "fcp": 215.4943,
+        "lcp": 536.24145,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 239489,
+        "server": 195,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 10
+      },
+      {
+        "path": "/posiciones",
+        "mode": "desktop",
+        "run": 3,
+        "score": 100,
+        "fcp": 209.22840000000002,
+        "lcp": 525.5355,
+        "cls": 0,
+        "tbt": 0,
+        "bytes": 238854,
+        "server": 183,
+        "lighthouse": "13.5.0",
+        "chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "scriptBytes": 146984,
+        "imageFailures": 10
+      }
+    ],
+    "httpSamples": [
+      {
+        "path": "/",
+        "run": 1,
+        "status": 200,
+        "ms": 130.49414099999996,
+        "htmlBytes": 146181,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "players",
+          "team_settings",
+          "games",
+          "standings"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 2,
+        "status": 200,
+        "ms": 115.66537799999998,
+        "htmlBytes": 146181,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "games",
+          "players",
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 3,
+        "status": 200,
+        "ms": 111.41405899999995,
+        "htmlBytes": 146181,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "games",
+          "players",
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 4,
+        "status": 200,
+        "ms": 190.01817200000005,
+        "htmlBytes": 146181,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "players",
+          "standings",
+          "games",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 5,
+        "status": 200,
+        "ms": 139.60053800000003,
+        "htmlBytes": 146181,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players",
+          "standings",
+          "games"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 6,
+        "status": 200,
+        "ms": 314.0714560000001,
+        "htmlBytes": 146181,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "players",
+          "games",
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 7,
+        "status": 200,
+        "ms": 126.54922099999999,
+        "htmlBytes": 146181,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "players",
+          "standings",
+          "games",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 8,
+        "status": 200,
+        "ms": 130.49557800000002,
+        "htmlBytes": 146181,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "players",
+          "standings",
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 9,
+        "status": 200,
+        "ms": 132.6730570000002,
+        "htmlBytes": 146181,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "games",
+          "standings",
+          "players",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/",
+        "run": 10,
+        "status": 200,
+        "ms": 117.131032,
+        "htmlBytes": 146181,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "standings",
+          "games",
+          "players",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 1,
+        "status": 200,
+        "ms": 247.37291100000016,
+        "htmlBytes": 104543,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "games",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 2,
+        "status": 200,
+        "ms": 112.53785100000005,
+        "htmlBytes": 104543,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 3,
+        "status": 200,
+        "ms": 140.44058600000017,
+        "htmlBytes": 104543,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 4,
+        "status": 200,
+        "ms": 104.33453499999996,
+        "htmlBytes": 104543,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "games",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 5,
+        "status": 200,
+        "ms": 109.9525279999998,
+        "htmlBytes": 104543,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "games",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 6,
+        "status": 200,
+        "ms": 103.56597499999998,
+        "htmlBytes": 104543,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 7,
+        "status": 200,
+        "ms": 81.21028400000023,
+        "htmlBytes": 104543,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "games",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 8,
+        "status": 200,
+        "ms": 81.29528800000026,
+        "htmlBytes": 104543,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "games",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 9,
+        "status": 200,
+        "ms": 118.32700999999997,
+        "htmlBytes": 104543,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "games",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/calendario",
+        "run": 10,
+        "status": 200,
+        "ms": 89.1235859999997,
+        "htmlBytes": 104543,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "games"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 1,
+        "status": 200,
+        "ms": 184.86530700000003,
+        "htmlBytes": 30923,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "players",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 2,
+        "status": 200,
+        "ms": 69.64434299999994,
+        "htmlBytes": 30923,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 3,
+        "status": 200,
+        "ms": 78.85753100000011,
+        "htmlBytes": 30923,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 4,
+        "status": 200,
+        "ms": 122.53098600000021,
+        "htmlBytes": 30923,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 5,
+        "status": 200,
+        "ms": 98.00580199999968,
+        "htmlBytes": 30923,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 6,
+        "status": 200,
+        "ms": 84.99335500000007,
+        "htmlBytes": 30923,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 7,
+        "status": 200,
+        "ms": 69.41544399999975,
+        "htmlBytes": 30923,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 8,
+        "status": 200,
+        "ms": 133.06144499999982,
+        "htmlBytes": 30923,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "players",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 9,
+        "status": 200,
+        "ms": 83.53733000000011,
+        "htmlBytes": 30923,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/roster",
+        "run": 10,
+        "status": 200,
+        "ms": 82.16099600000052,
+        "htmlBytes": 30923,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "players"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 1,
+        "status": 200,
+        "ms": 86.13799199999994,
+        "htmlBytes": 61455,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "standings",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 2,
+        "status": 200,
+        "ms": 102.55034499999965,
+        "htmlBytes": 61455,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 3,
+        "status": 200,
+        "ms": 100.07167000000027,
+        "htmlBytes": 61455,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 4,
+        "status": 200,
+        "ms": 110.14001599999938,
+        "htmlBytes": 61455,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "standings",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 5,
+        "status": 200,
+        "ms": 96.22431200000028,
+        "htmlBytes": 61455,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "standings",
+          "team_settings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 6,
+        "status": 200,
+        "ms": 168.49048399999992,
+        "htmlBytes": 61455,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 7,
+        "status": 200,
+        "ms": 83.87719800000013,
+        "htmlBytes": 61455,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 8,
+        "status": 200,
+        "ms": 71.21632800000043,
+        "htmlBytes": 61455,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 9,
+        "status": 200,
+        "ms": 69.61764099999982,
+        "htmlBytes": 61455,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "team_settings",
+          "standings"
+        ]
+      },
+      {
+        "path": "/posiciones",
+        "run": 10,
+        "status": 200,
+        "ms": 78.30183500000021,
+        "htmlBytes": 61455,
+        "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "queries": [
+          "standings",
+          "team_settings"
+        ]
+      }
+    ]
+  }
+}

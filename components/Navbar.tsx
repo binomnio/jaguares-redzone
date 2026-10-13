@@ -11,7 +11,7 @@ export default function Navbar({ teamLogo, teamName }: { teamLogo: string, teamN
           
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <div className="w-12 h-12 relative">
-              <Image src={teamLogo} alt={`Logo ${teamName}`} fill className="object-contain drop-shadow-md" />
+              <Image src={teamLogo} alt={`Logo ${teamName}`} fill sizes="48px" className="object-contain drop-shadow-md" />
             </div>
             <span className="font-black uppercase tracking-widest text-white hidden sm:block drop-shadow-sm">
               {teamName}

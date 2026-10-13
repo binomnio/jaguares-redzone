@@ -159,7 +159,7 @@ export default function NextGameHero({
           <div className="flex flex-col items-center group w-1/3">
             <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 relative mb-2 md:mb-4 transform transition-transform duration-300 ${!isPast && 'group-hover:scale-105'}`}>
               {homeTeamLogo && (
-                <Image src={homeTeamLogo} alt={homeTeamName} fill className={`object-contain drop-shadow-xl ${isPast && !homeWon && !isTie ? 'opacity-60 grayscale' : ''}`} />
+                <Image src={homeTeamLogo} alt={homeTeamName} fill sizes="(min-width: 768px) 128px, (min-width: 640px) 80px, 64px" className={`object-contain drop-shadow-xl ${isPast && !homeWon && !isTie ? 'opacity-60 grayscale' : ''}`} />
               )}
             </div>
             <h3 className="text-[10px] sm:text-xs md:text-lg font-black uppercase tracking-widest text-gray-800 truncate w-full text-center">{homeTeamName}</h3>
@@ -185,7 +185,7 @@ export default function NextGameHero({
           <div className="flex flex-col items-center group w-1/3">
             <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 relative mb-2 md:mb-4 transform transition-transform duration-300 ${!isPast && 'group-hover:scale-105'}`}>
               {awayTeamLogo && (
-                <Image src={awayTeamLogo} alt={awayTeamName} fill className={`object-contain drop-shadow-xl ${isPast && !awayWon && !isTie ? 'opacity-60 grayscale' : ''}`} />
+                <Image src={awayTeamLogo} alt={awayTeamName} fill sizes="(min-width: 768px) 128px, (min-width: 640px) 80px, 64px" className={`object-contain drop-shadow-xl ${isPast && !awayWon && !isTie ? 'opacity-60 grayscale' : ''}`} />
               )}
             </div>
             <h3 className="text-[10px] sm:text-xs md:text-lg font-black uppercase tracking-widest text-gray-800 truncate w-full text-center">{awayTeamName}</h3>

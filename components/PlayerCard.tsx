@@ -1,7 +1,9 @@
 // components/PlayerCard.tsx
 import Image from 'next/image';
 
-export default function PlayerCard({ player }: { player: any }) {
+const rosterPhotoSizes = '(min-width: 1280px) 231px, (min-width: 1024px) calc((100vw - 104px) / 4), (min-width: 768px) calc((100vw - 80px) / 3), (min-width: 640px) calc((100vw - 64px) / 3), calc((100vw - 48px) / 2)';
+
+export default function PlayerCard({ player, sizes = rosterPhotoSizes }: { player: any; sizes?: string }) {
   const initials = `${player.first_name?.charAt(0) || ''}${player.last_name?.charAt(0) || ''}`.toUpperCase();
 
   return (
@@ -19,7 +21,8 @@ export default function PlayerCard({ player }: { player: any }) {
           <Image 
             src={player.photo_url} 
             alt={`${player.first_name} ${player.last_name}`} 
-            fill 
+            fill
+            sizes={sizes}
             className="object-cover object-top transition-transform duration-700 group-hover:scale-105" 
           />
         ) : (
