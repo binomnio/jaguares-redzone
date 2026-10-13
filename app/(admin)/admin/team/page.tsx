@@ -1,3 +1,4 @@
+import { requireAdmin, validatePayload } from '@/utils/security';
 // app/(admin)/settings/page.tsx
 import { createClient } from '@/utils/supabase/server';
 import { revalidatePath } from 'next/cache';
@@ -18,6 +19,7 @@ export default async function TeamSettingsPage() {
   async function updateSettings(formData: FormData) {
     'use server';
     const supabaseServer = await createClient();
+    await requireAdmin(supabaseServer);
     
     // Captura de datos básicos
     const team_name = formData.get('team_name') as string;
@@ -48,10 +50,11 @@ export default async function TeamSettingsPage() {
       button_color
     };
 
+    const validated = validatePayload('team_settings', dataToSave);
     if (settingsId) {
-      await supabaseServer.from('team_settings').update(dataToSave).eq('id', settingsId);
+      await supabaseServer.from('team_settings').update(validated).eq('id', settingsId);
     } else {
-      await supabaseServer.from('team_settings').insert([dataToSave]);
+      await supabaseServer.from('team_settings').insert([validated]);
     }
 
     revalidatePath('/', 'layout');
