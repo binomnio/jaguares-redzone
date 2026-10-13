@@ -62,9 +62,9 @@ export default async function TeamSettingsPage() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <h2 className="text-3xl font-black uppercase mb-8">Identidad del <span className="text-team-primary">Equipo</span></h2>
+      <h2 className="text-2xl md:text-3xl font-black uppercase mb-8">Identidad del <span className="text-team-primary">Equipo</span></h2>
 
-      <form action={updateSettings} className="bg-black border border-gray-800 rounded-xl p-8 space-y-8">
+      <form action={updateSettings} className="bg-black border border-gray-800 rounded-xl p-4 sm:p-8 space-y-8">
         
         {/* SECCIÓN 1: DATOS BÁSICOS */}
         <div className="space-y-6">
@@ -72,22 +72,22 @@ export default async function TeamSettingsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Nombre del Equipo</label>
-              <input type="text" name="team_name" defaultValue={settings?.team_name || 'Halcones'} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white outline-none" required />
+              <input type="text" name="team_name" defaultValue={settings?.team_name || 'Halcones'} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white outline-none" required />
             </div>
 
             <div>
               <label className="block text-xs font-bold text-gray-400 uppercase mb-2">URL del Logo (cPanel)</label>
-              <input type="url" name="logo_url" defaultValue={settings?.logo_url || ''} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white outline-none" required />
+              <input type="url" name="logo_url" defaultValue={settings?.logo_url || ''} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white outline-none" required />
             </div>
 
             <div>
               <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Nombre Corto del Equipo</label>
-              <input type="text" name="short_name" defaultValue={settings?.short_name || 'HAL'} placeholder="Ej. HAL" maxLength={4} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold" />
+              <input type="text" name="short_name" defaultValue={settings?.short_name || 'HAL'} placeholder="Ej. HAL" maxLength={4} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold" />
             </div>
 
             <div>
               <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Récord Actual</label>
-              <input type="text" name="current_record" defaultValue={settings?.current_record || '0-0'} placeholder="Ej. 2-0" className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none font-bold" />
+              <input type="text" name="current_record" defaultValue={settings?.current_record || '0-0'} placeholder="Ej. 2-0" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none font-bold" />
             </div>
           </div>
         </div>
@@ -124,35 +124,35 @@ export default async function TeamSettingsPage() {
             <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
               <label className="block text-[10px] font-bold text-gray-400 uppercase mb-2">Navbar y Footer (Layout)</label>
               <div className="flex items-center gap-3">
-                <input type="color" name="layout_color" defaultValue={settings?.layout_color || settings?.secondary_color || '#111827'} className="w-10 h-10 rounded cursor-pointer bg-transparent border-0" />
+                <input type="color" name="layout_color" defaultValue={settings?.layout_color || settings?.secondary_color || '#111827'} className="w-11 h-11 sm:w-10 sm:h-10 rounded cursor-pointer bg-transparent border-0" />
               </div>
             </div>
 
             <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
               <label className="block text-[10px] font-bold text-gray-400 uppercase mb-2">Fondos (Hero/Headers)</label>
               <div className="flex items-center gap-3">
-                <input type="color" name="bg_color" defaultValue={settings?.bg_color || settings?.primary_color || '#dc2626'} className="w-10 h-10 rounded cursor-pointer bg-transparent border-0" />
+                <input type="color" name="bg_color" defaultValue={settings?.bg_color || settings?.primary_color || '#dc2626'} className="w-11 h-11 sm:w-10 sm:h-10 rounded cursor-pointer bg-transparent border-0" />
               </div>
             </div>
 
             <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
               <label className="block text-[10px] font-bold text-gray-400 uppercase mb-2">Textos Destacados</label>
               <div className="flex items-center gap-3">
-                <input type="color" name="text_color" defaultValue={settings?.text_color || settings?.primary_color || '#dc2626'} className="w-10 h-10 rounded cursor-pointer bg-transparent border-0" />
+                <input type="color" name="text_color" defaultValue={settings?.text_color || settings?.primary_color || '#dc2626'} className="w-11 h-11 sm:w-10 sm:h-10 rounded cursor-pointer bg-transparent border-0" />
               </div>
             </div>
 
             <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
               <label className="block text-[10px] font-bold text-gray-400 uppercase mb-2">Resplandor (Tarjetas)</label>
               <div className="flex items-center gap-3">
-                <input type="color" name="glow_color" defaultValue={settings?.glow_color || settings?.primary_color || '#dc2626'} className="w-10 h-10 rounded cursor-pointer bg-transparent border-0" />
+                <input type="color" name="glow_color" defaultValue={settings?.glow_color || settings?.primary_color || '#dc2626'} className="w-11 h-11 sm:w-10 sm:h-10 rounded cursor-pointer bg-transparent border-0" />
               </div>
             </div>
 
             <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
               <label className="block text-[10px] font-bold text-gray-400 uppercase mb-2">Botones Principales</label>
               <div className="flex items-center gap-3">
-                <input type="color" name="button_color" defaultValue={settings?.button_color || settings?.primary_color || '#dc2626'} className="w-10 h-10 rounded cursor-pointer bg-transparent border-0" />
+                <input type="color" name="button_color" defaultValue={settings?.button_color || settings?.primary_color || '#dc2626'} className="w-11 h-11 sm:w-10 sm:h-10 rounded cursor-pointer bg-transparent border-0" />
               </div>
             </div>
 
@@ -160,7 +160,7 @@ export default async function TeamSettingsPage() {
         </div>
 
         <div className="pt-8">
-          <button type="submit" className="w-full md:w-auto bg-team-primary hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg uppercase tracking-wider transition-colors">
+          <button type="submit" className="w-full min-w-0 md:w-auto bg-team-primary hover:bg-red-700 text-white font-bold py-4 px-4 sm:px-10 rounded-lg uppercase tracking-wider transition-colors">
             Guardar Configuración
           </button>
         </div>

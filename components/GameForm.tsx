@@ -71,27 +71,27 @@ export default function GameForm({ initialData = {} }: { initialData?: any }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-black border border-gray-800 rounded-xl p-8 space-y-6">
+    <form onSubmit={handleSubmit} className="bg-black border border-gray-800 rounded-xl p-4 sm:p-8 space-y-6">
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Nombre del Rival</label>
-          <input type="text" name="opponent_name" defaultValue={initialData.opponent_name} required className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Pumas CU"/>
+          <input type="text" name="opponent_name" defaultValue={initialData.opponent_name} required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Pumas CU"/>
         </div>
         
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">URL del Logo del Rival (cPanel)</label>
-          <input type="url" name="opponent_logo_url" defaultValue={initialData.opponent_logo_url} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://tuservidor.com/..."/>
+          <input type="url" name="opponent_logo_url" defaultValue={initialData.opponent_logo_url} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://tuservidor.com/..."/>
         </div>
 
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Nombre Corto Rival (Max 3-4 letras)</label>
-          <input type="text" name="opponent_short_name" defaultValue={initialData.opponent_short_name} placeholder="Ej. VIS" maxLength={4} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold" />
+          <input type="text" name="opponent_short_name" defaultValue={initialData.opponent_short_name} placeholder="Ej. VIS" maxLength={4} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold" />
         </div>
 
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Récord del Rival</label>
-          <input type="text" name="opponent_record" defaultValue={initialData.opponent_record} placeholder="Ej. 2-1" className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none font-bold" />
+          <input type="text" name="opponent_record" defaultValue={initialData.opponent_record} placeholder="Ej. 2-1" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none font-bold" />
         </div>
 
         <div>
@@ -101,36 +101,36 @@ export default function GameForm({ initialData = {} }: { initialData?: any }) {
             name="game_date" 
             defaultValue={formattedDate} /* <-- AQUI USAMOS LA FECHA FORMATEADA */
             required 
-            className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold" 
+            className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold"
           />
         </div>
 
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Estadio / Lugar</label>
-          <input type="text" name="location" defaultValue={initialData.location} required className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Estadio Olímpico"/>
+          <input type="text" name="location" defaultValue={initialData.location} required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Estadio Olímpico"/>
         </div>
 
         {/* NUEVOS INPUTS: Jornada, Google Maps y Stream */}
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Jornada / Semana</label>
-          <input type="text" name="jornada" defaultValue={initialData.jornada} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Semana 1 o Jornada 3"/>
+          <input type="text" name="jornada" defaultValue={initialData.jornada} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Semana 1 o Jornada 3"/>
         </div>
 
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">URL de Google Maps (Cómo llegar)</label>
-          <input type="url" name="maps_url" defaultValue={initialData.maps_url} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://maps.google.com/..."/>
+          <input type="url" name="maps_url" defaultValue={initialData.maps_url} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://maps.google.com/..."/>
         </div>
 
         <div className="md:col-span-2">
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">URL de Transmisión / Video (Stream)</label>
-          <input type="url" name="stream_url" defaultValue={initialData.stream_url} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://youtube.com/live/... o Facebook Video"/>
+          <input type="url" name="stream_url" defaultValue={initialData.stream_url} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://youtube.com/live/... o Facebook Video"/>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-gray-800">
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Localía</label>
-          <select name="is_home" defaultValue={initialData.is_home?.toString() || "true"} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white outline-none">
+          <select name="is_home" defaultValue={initialData.is_home?.toString() || "true"} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white outline-none">
             <option value="true">Somos Local</option>
             <option value="false">Somos Visita</option>
           </select>
@@ -138,7 +138,7 @@ export default function GameForm({ initialData = {} }: { initialData?: any }) {
 
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Estatus del Partido</label>
-          <select name="status" defaultValue={initialData.status || "upcoming"} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white outline-none">
+          <select name="status" defaultValue={initialData.status || "upcoming"} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white outline-none">
             <option value="upcoming">Próximo (Upcoming)</option>
             <option value="final">Finalizado (Final)</option>
           </select>
@@ -149,16 +149,16 @@ export default function GameForm({ initialData = {} }: { initialData?: any }) {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-gray-800">
         <div>
           <label className="block text-xs font-bold text-team-primary uppercase mb-2">Puntos (Nosotros)</label>
-          <input type="number" name="our_score" defaultValue={initialData.our_score || 0} min="0" className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none text-xl font-bold"/>
+          <input type="number" name="our_score" defaultValue={initialData.our_score || 0} min="0" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none text-xl font-bold"/>
         </div>
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Puntos (Rival)</label>
-          <input type="number" name="opponent_score" defaultValue={initialData.opponent_score || 0} min="0" className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none text-xl font-bold"/>
+          <input type="number" name="opponent_score" defaultValue={initialData.opponent_score || 0} min="0" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none text-xl font-bold"/>
         </div>
       </div>
 
       <div className="pt-6">
-        <button type="submit" disabled={loading} className="bg-team-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-colors">
+        <button type="submit" disabled={loading} className="w-full sm:w-auto min-h-11 bg-team-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-colors">
           {loading ? 'Guardando...' : 'Guardar Partido'}
         </button>
       </div>

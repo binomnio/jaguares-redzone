@@ -17,7 +17,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="max-w-5xl mx-auto">
-      <h2 className="text-3xl font-black mb-8">Resumen General</h2>
+      <h2 className="text-2xl md:text-3xl font-black mb-8">Resumen General</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Tarjeta de Roster */}

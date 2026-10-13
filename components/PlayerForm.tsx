@@ -50,54 +50,54 @@ export default function PlayerForm({ initialData = {} }: { initialData?: any }) 
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-black border border-gray-800 rounded-xl p-8 space-y-6">
+    <form onSubmit={handleSubmit} className="bg-black border border-gray-800 rounded-xl p-4 sm:p-8 space-y-6">
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Nombre(s)</label>
-          <input type="text" name="first_name" defaultValue={initialData.first_name} required className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
+          <input type="text" name="first_name" defaultValue={initialData.first_name} required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
         </div>
         
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Apellidos</label>
-          <input type="text" name="last_name" defaultValue={initialData.last_name} required className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
+          <input type="text" name="last_name" defaultValue={initialData.last_name} required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
         </div>
 
         <div>
           <label className="block text-xs font-bold text-team-primary uppercase mb-2">Número de Jersey</label>
-          <input type="text" name="jersey_number" defaultValue={initialData.jersey_number} required className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none font-bold text-xl" />
+          <input type="text" name="jersey_number" defaultValue={initialData.jersey_number} required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none font-bold text-xl" />
         </div>
 
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Posición</label>
-          <input type="text" name="position" defaultValue={initialData.position} required placeholder="Ej. QB, WR, LB..." className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold" />
+          <input type="text" name="position" defaultValue={initialData.position} required placeholder="Ej. QB, WR, LB..." className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold" />
         </div>
       </div>
 
       <div>
         <label className="block text-xs font-bold text-gray-400 uppercase mb-2">URL de la Foto (cPanel)</label>
-        <input type="url" name="photo_url" defaultValue={initialData.photo_url} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://tuservidor.com/...png" />
+        <input type="url" name="photo_url" defaultValue={initialData.photo_url} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://tuservidor.com/...png" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-gray-800">
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Estatura</label>
-          <input type="text" name="height" defaultValue={initialData.height} placeholder="Ej. 1.85m" className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
+          <input type="text" name="height" defaultValue={initialData.height} placeholder="Ej. 1.85m" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
         </div>
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Peso</label>
-          <input type="text" name="weight" defaultValue={initialData.weight} placeholder="Ej. 95kg" className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
+          <input type="text" name="weight" defaultValue={initialData.weight} placeholder="Ej. 95kg" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
         </div>
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Estado</label>
-          <select name="active" defaultValue={initialData.active !== false ? "true" : "false"} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white outline-none">
+          <select name="active" defaultValue={initialData.active !== false ? "true" : "false"} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white outline-none">
             <option value="true">Activo</option>
             <option value="false">Inactivo (Lesionado / Baja)</option>
           </select>
         </div>
         <div>
           <label className="block text-xs font-bold text-team-primary uppercase mb-2">¿Mostrar en Inicio?</label>
-          <select name="is_featured" defaultValue={initialData.is_featured ? "true" : "false"} className="w-full bg-gray-900 border border-team-primary/50 rounded p-3 text-white outline-none">
+          <select name="is_featured" defaultValue={initialData.is_featured ? "true" : "false"} className="w-full min-w-0 bg-gray-900 border border-team-primary/50 rounded p-3 text-white outline-none">
             <option value="false">No (Solo Roster)</option>
             <option value="true">Sí (Jugador Destacado)</option>
           </select>
@@ -106,11 +106,11 @@ export default function PlayerForm({ initialData = {} }: { initialData?: any }) 
 
       <div className="pt-6 border-t border-gray-800">
         <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Biografía o Notas (Opcional)</label>
-        <textarea name="bio" defaultValue={initialData.bio} rows={3} className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none resize-none"></textarea>
+        <textarea name="bio" defaultValue={initialData.bio} rows={3} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none resize-none"></textarea>
       </div>
 
       <div className="pt-6">
-        <button type="submit" disabled={loading} className="bg-team-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-colors">
+        <button type="submit" disabled={loading} className="w-full sm:w-auto min-h-11 bg-team-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-colors">
           {loading ? 'Guardando...' : 'Guardar Jugador'}
         </button>
       </div>
