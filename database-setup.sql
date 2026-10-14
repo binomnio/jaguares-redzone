@@ -1,12 +1,12 @@
 -- ==============================================================
--- SCRIPT MAESTRO DE BASE DE DATOS 
--- Estructura, Seguridad (RLS) y Datos Iniciales
+-- SCRIPT MAESTRO DE BASE DE DATOS (BN SPORTS REDZONE)
+-- Estructura, Seguridad (RLS Admin) y Datos Iniciales
 -- ==============================================================
 
 -- 1. EXTENSIONES REQUERIDAS (Para generar IDs automáticos)
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- 2. CREACIÓN DE TABLAS (Extraídas de tu proyecto original)
+-- 2. CREACIÓN DE TABLAS
 CREATE TABLE IF NOT EXISTS public.team_settings (
   id uuid NOT NULL DEFAULT uuid_generate_v4(),
   team_name text NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS public.players (
   first_name text NOT NULL,
   last_name text NOT NULL,
   jersey_number text NOT NULL,
-  position text NOT NULL,
+  position text, -- <--- CORREGIDO: Sin NOT NULL para permitir importar jugadores sin posición
   photo_url text,
   height text,
   weight text,
@@ -90,7 +90,7 @@ CREATE POLICY "Lectura publica games" ON public.games FOR SELECT USING (true);
 CREATE POLICY "Lectura publica standings" ON public.standings FOR SELECT USING (true);
 CREATE POLICY "Lectura publica players" ON public.players FOR SELECT USING (true);
 
--- 5. POLÍTICAS DE ESCRITURA (Solo tú o tu cliente desde el panel admin)
+-- 5. POLÍTICAS DE ESCRITURA BLINDADAS (Solo el Admin logueado)
 -- Para team_settings
 CREATE POLICY "Escribir team_settings" ON public.team_settings FOR INSERT TO authenticated WITH CHECK ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
 CREATE POLICY "Actualizar team_settings" ON public.team_settings FOR UPDATE TO authenticated USING ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin') WITH CHECK ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
@@ -114,3 +114,16 @@ CREATE POLICY "Borrar players" ON public.players FOR DELETE TO authenticated USI
 -- 6. REGISTRO SEMILLA (Previene el error de actualización la primera vez)
 INSERT INTO public.team_settings (team_name, short_name, primary_color, secondary_color) 
 VALUES ('Nuevo Equipo', 'NEQ', '#2563eb', '#1e293b');
+
+-- ==============================================================
+-- 7. OTORGAR PERMISOS DE ADMINISTRADOR (MANUAL)
+-- ==============================================================
+-- Instrucciones: 
+-- 1. Crea el usuario en Supabase > Authentication.
+-- 2. Descomenta las líneas de abajo quitando los guiones "--".
+-- 3. Cambia el correo por el del usuario que acabas de crear.
+-- 4. Selecciona solo esas 3 líneas y dale a "Run" en el SQL Editor.
+
+-- UPDATE auth.users
+-- SET raw_app_meta_data = coalesce(raw_app_meta_data, '{}'::jsonb) || '{"role": "admin"}'::jsonb
+-- WHERE email = 'tu_correo_aqui@gmail.com';
