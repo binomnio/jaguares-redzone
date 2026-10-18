@@ -4,7 +4,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function StandingForm({ initialData = {} }: { initialData?: any }) {
+type StandingFormData = {
+  id?: string; position?: number | null; team_name?: string; short_name?: string | null;
+  logo_url?: string | null; wins?: number | null; losses?: number | null; ties?: number | null;
+  pf?: number | null; pc?: number | null; dif?: number | null; stk?: string | null;
+};
+
+export default function StandingForm({ initialData = {} }: { initialData?: StandingFormData }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -53,14 +59,14 @@ export default function StandingForm({ initialData = {} }: { initialData?: any }
 
   return (
     <form onSubmit={handleSubmit} className="bg-black border border-gray-800 rounded-xl p-4 sm:p-8 space-y-6">
-      
+
       {/* Ajustamos el Grid para incluir la Posición, Nombre Completo y Nombre Corto */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="md:col-span-1">
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Posición (Ranking)</label>
           <input type="number" name="position" defaultValue={initialData.position || 1} min="1" required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none font-bold text-xl" />
         </div>
-        
+
         <div className="md:col-span-2">
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Nombre del Equipo</label>
           <input type="text" name="team_name" defaultValue={initialData.team_name} required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Halcones" />
@@ -75,7 +81,7 @@ export default function StandingForm({ initialData = {} }: { initialData?: any }
 
       <div>
         <label className="block text-xs font-bold text-gray-400 uppercase mb-2">URL del Logo (Opcional)</label>
-        <input type="url" name="logo_url" defaultValue={initialData.logo_url} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://..." />
+        <input type="url" name="logo_url" defaultValue={initialData.logo_url ?? ''} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://..." />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-gray-800">
@@ -108,7 +114,7 @@ export default function StandingForm({ initialData = {} }: { initialData?: any }
         </div>
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Racha (STK)</label>
-          <input type="text" name="stk" defaultValue={initialData.stk} placeholder="Ej. G3 o P1" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none font-bold uppercase" />
+          <input type="text" name="stk" defaultValue={initialData.stk ?? ''} placeholder="Ej. G3 o P1" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none font-bold uppercase" />
         </div>
       </div>
 

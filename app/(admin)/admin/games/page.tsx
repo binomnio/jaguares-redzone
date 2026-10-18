@@ -1,3 +1,4 @@
+import { formatGameDate, sortGames } from '@/utils/games';
 // app/(admin)/admin/games/page.tsx
 import { createClient } from '@/utils/supabase/server';
 import Link from 'next/link';
@@ -44,10 +45,10 @@ export default async function AdminGamesPage() {
             </tr>
           </thead>
           <tbody className="text-sm">
-            {games?.map((game) => (
+            {sortGames(games).map((game) => (
               <tr key={game.id} className="hover:bg-gray-900/50 transition-colors border-b border-gray-800/50">
                 <td className="p-4">
-                  {new Date(game.game_date).toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric' })}
+                  {formatGameDate(game.game_date).date}
                 </td>
                 <td className="p-4 font-bold">{game.opponent_name}</td>
                 <td className="p-4 text-center">

@@ -4,7 +4,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function PlayerForm({ initialData = {} }: { initialData?: any }) {
+type PlayerFormData = {
+  id?: string; first_name?: string; last_name?: string; jersey_number?: string | number;
+  position?: string | null; photo_url?: string | null; height?: string | null; weight?: string | null;
+  bio?: string | null; active?: boolean | null; is_featured?: boolean | null;
+};
+
+export default function PlayerForm({ initialData = {} }: { initialData?: PlayerFormData }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -51,13 +57,13 @@ export default function PlayerForm({ initialData = {} }: { initialData?: any }) 
 
   return (
     <form onSubmit={handleSubmit} className="bg-black border border-gray-800 rounded-xl p-4 sm:p-8 space-y-6">
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Nombre(s)</label>
           <input type="text" name="first_name" defaultValue={initialData.first_name} required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
         </div>
-        
+
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Apellidos</label>
           <input type="text" name="last_name" defaultValue={initialData.last_name} required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
@@ -76,17 +82,17 @@ export default function PlayerForm({ initialData = {} }: { initialData?: any }) 
 
       <div>
         <label className="block text-xs font-bold text-gray-400 uppercase mb-2">URL de la Foto (cPanel)</label>
-        <input type="url" name="photo_url" defaultValue={initialData.photo_url} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://tuservidor.com/...png" />
+        <input type="url" name="photo_url" defaultValue={initialData.photo_url ?? ''} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://tuservidor.com/...png" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-gray-800">
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Estatura</label>
-          <input type="text" name="height" defaultValue={initialData.height} placeholder="Ej. 1.85m" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
+          <input type="text" name="height" defaultValue={initialData.height ?? ''} placeholder="Ej. 1.85m" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
         </div>
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Peso</label>
-          <input type="text" name="weight" defaultValue={initialData.weight} placeholder="Ej. 95kg" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
+          <input type="text" name="weight" defaultValue={initialData.weight ?? ''} placeholder="Ej. 95kg" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" />
         </div>
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Estado</label>
@@ -106,7 +112,7 @@ export default function PlayerForm({ initialData = {} }: { initialData?: any }) 
 
       <div className="pt-6 border-t border-gray-800">
         <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Biografía o Notas (Opcional)</label>
-        <textarea name="bio" defaultValue={initialData.bio} rows={3} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none resize-none"></textarea>
+        <textarea name="bio" defaultValue={initialData.bio ?? ''} rows={3} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none resize-none"></textarea>
       </div>
 
       <div className="pt-6">

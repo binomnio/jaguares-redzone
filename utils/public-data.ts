@@ -12,6 +12,6 @@ export function loadHomeData(client: SupabaseClient) {
     client.from('team_settings').select('*').limit(1).maybeSingle(),
     client.from('games').select(GAME_FIELDS).order('game_date', { ascending: true }),
     client.from('standings').select(STANDING_FIELDS).order('position', { ascending: true }),
-    client.from('players').select(PLAYER_FIELDS).eq('active', true).order('jersey_number', { ascending: true }),
+    client.from('players').select(PLAYER_FIELDS).eq('active', true).order('last_name', { ascending: true }),
   ]);
 }

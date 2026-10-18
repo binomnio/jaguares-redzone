@@ -8,11 +8,11 @@ No cambian reglas de autorización, roles, Supabase, APIs, datos ni caché.
 
 ## Validación
 
-- Build de producción, TypeScript y las 19 pruebas existentes: aprobados.
+- Build de producción, TypeScript y las 31 pruebas: aprobados.
 - Chromium: 44 comprobaciones (11 vistas × 320, 390, 768 y 1440 px) sobre componentes reales con datos locales aislados. Se comprueban apertura/cierre del menú, Escape, cierre al elegir sección, visibilidad de la navegación de escritorio, ausencia de desbordamiento global y errores de hidratación/JavaScript.
 - Vistas: dashboard, identidad, tres listados, tres altas y tres ediciones.
 - En el servidor de producción real, sin sesión: dashboard redirige a login y las seis APIs de escritura devuelven 401.
-- Lint global mantiene cinco errores y cuatro advertencias anteriores. El componente nuevo, las páginas admin y el script de comprobación pasan ESLint.
+- Lint global termina sin errores y mantiene tres advertencias anteriores. El componente nuevo, las páginas admin y el script de comprobación pasan ESLint.
 
 La navegación se hidrata y se prueba de forma interactiva; los formularios se renderizan para comprobar su geometría y no se envían. La prueba de interfaz usa mocks de Next Link/Image y Supabase únicamente en el proceso de pruebas. No abre un acceso admin en la aplicación. La navegación de Link se representa con historial local y se valida el cierre del menú; no equivale a probar Next Router, login o guardado con una sesión real. Se usan imágenes de muestra y Arial junto al CSS de producción para verificar geometría; no se certifican fuentes, recursos remotos ni Safari/iOS. Para comprobar los flujos completos hace falta una cuenta real con `app_metadata.role = "admin"`.
 
@@ -27,3 +27,5 @@ node scripts/check-admin-mobile.mjs
 ```
 
 Las herramientas se instalan fuera de las dependencias de la aplicación. `ESBUILD_MODULE` y `PLAYWRIGHT_MODULE` permiten usar instalaciones ya disponibles. Los archivos temporales, resultados y capturas se generan en `/tmp/admin-mobile-fixture`; `ADMIN_MOBILE_OUTPUT` permite elegir otra ubicación. El servidor de fixtures escucha solo en loopback y se cierra al terminar.
+
+Las funciones de TBD, roster y posiciones compartidas por los cuatro portales se documentan en [common-base.md](common-base.md).

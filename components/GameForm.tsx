@@ -3,17 +3,28 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { isTbdDate, TBD_GAME_DATE } from '@/utils/games';
 
-export default function GameForm({ initialData = {} }: { initialData?: any }) {
+type GameFormData = {
+  id?: string; game_date?: string | null; opponent_name?: string; opponent_logo_url?: string | null;
+  opponent_short_name?: string | null; opponent_record?: string | null; location?: string | null;
+  is_home?: boolean | null; status?: string; our_score?: number | null; opponent_score?: number | null;
+  jornada?: string | null; maps_url?: string | null; stream_url?: string | null;
+};
+
+export default function GameForm({ initialData = {} }: { initialData?: GameFormData }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  
-  // 1. FORMATEO PERFECTO DE LA FECHA INICIAL
-  // Ajustamos el offset para que el input type="datetime-local" muestre la hora exacta
+
+  // Share the same sentinel detection used by the public schedule.
+  const isInitiallyTBD = isTbdDate(initialData.game_date);
+  const [isTBD, setIsTBD] = useState(isInitiallyTBD || false);
+
+  // FORMATEO DE LA FECHA INICIAL (solo si no es TBD)
   let formattedDate = '';
-  if (initialData?.game_date) {
+  if (initialData?.game_date && !isInitiallyTBD) {
     const d = new Date(initialData.game_date);
-    d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); // Compensación mágica
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
     formattedDate = d.toISOString().slice(0, 16);
   }
 
@@ -22,21 +33,24 @@ export default function GameForm({ initialData = {} }: { initialData?: any }) {
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
-    
-    // 2. CAPTURA CORRECTA AL GUARDAR
-    // Obtenemos el string crudo (ej: "2026-09-25T20:00")
-    const rawDate = formData.get('game_date') as string;
-    
-    // Lo guardamos pasándole directamente el string crudo a Supabase.
-    // Al añadir 'Z' al final, le decimos a Supabase: "Guarda esto exactamente como viene, sin hacer cálculos".
-    const finalGameDate = rawDate ? new Date(rawDate).toISOString() : null;
+
+    // CAPTURA DE FECHA Y TBD
+    let finalGameDate = null;
+
+    if (isTBD) {
+      // Si marcaron TBD, guardamos una fecha bandera: 1 de enero de 2999
+      finalGameDate = TBD_GAME_DATE;
+    } else {
+      const rawDate = formData.get('game_date') as string;
+      finalGameDate = rawDate ? new Date(rawDate).toISOString() : null;
+    }
 
     const data = {
       opponent_name: formData.get('opponent_name'),
       opponent_logo_url: formData.get('opponent_logo_url'),
       opponent_short_name: formData.get('opponent_short_name'),
       opponent_record: formData.get('opponent_record'),
-      game_date: finalGameDate, // <-- USAMOS NUESTRA NUEVA VARIABLE
+      game_date: finalGameDate,
       location: formData.get('location'),
       is_home: formData.get('is_home') === 'true',
       status: formData.get('status'),
@@ -72,58 +86,71 @@ export default function GameForm({ initialData = {} }: { initialData?: any }) {
 
   return (
     <form onSubmit={handleSubmit} className="bg-black border border-gray-800 rounded-xl p-4 sm:p-8 space-y-6">
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Nombre del Rival</label>
           <input type="text" name="opponent_name" defaultValue={initialData.opponent_name} required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Pumas CU"/>
         </div>
-        
+
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">URL del Logo del Rival (cPanel)</label>
-          <input type="url" name="opponent_logo_url" defaultValue={initialData.opponent_logo_url} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://tuservidor.com/..."/>
+          <input type="url" name="opponent_logo_url" defaultValue={initialData.opponent_logo_url ?? ''} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://tuservidor.com/..."/>
         </div>
 
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Nombre Corto Rival (Max 3-4 letras)</label>
-          <input type="text" name="opponent_short_name" defaultValue={initialData.opponent_short_name} placeholder="Ej. VIS" maxLength={4} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold" />
+          <input type="text" name="opponent_short_name" defaultValue={initialData.opponent_short_name ?? ''} placeholder="Ej. VIS" maxLength={4} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold" />
         </div>
 
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Récord del Rival</label>
-          <input type="text" name="opponent_record" defaultValue={initialData.opponent_record} placeholder="Ej. 2-1" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none font-bold" />
+          <input type="text" name="opponent_record" defaultValue={initialData.opponent_record ?? ''} placeholder="Ej. 2-1" className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none font-bold" />
         </div>
 
-        <div>
-          <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Fecha y Hora</label>
-          <input 
-            type="datetime-local" 
-            name="game_date" 
-            defaultValue={formattedDate} /* <-- AQUI USAMOS LA FECHA FORMATEADA */
-            required 
-            className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold"
+        {/* CONTENEDOR DE FECHA Y CHECKBOX TBD */}
+        <div className="relative">
+          <div className="flex justify-between items-center mb-2">
+            <label className="block text-xs font-bold text-gray-400 uppercase">Fecha y Hora</label>
+            <label className="flex items-center space-x-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={isTBD}
+                onChange={(e) => setIsTBD(e.target.checked)}
+                className="w-4 h-4 accent-team-primary"
+              />
+              <span className="text-xs font-bold text-gray-300 uppercase tracking-widest">Por Definir (TBD)</span>
+            </label>
+          </div>
+          <input
+            type="datetime-local"
+            name="game_date"
+            defaultValue={formattedDate}
+            required={!isTBD} // Solo es requerido si NO es TBD
+            disabled={isTBD} // Se desactiva si está en TBD
+            className={`w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold transition-opacity ${isTBD ? 'opacity-30 cursor-not-allowed' : ''}`}
           />
         </div>
 
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Estadio / Lugar</label>
-          <input type="text" name="location" defaultValue={initialData.location} required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Estadio Olímpico"/>
+          <input type="text" name="location" defaultValue={initialData.location ?? ''} required className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Estadio Olímpico"/>
         </div>
 
         {/* NUEVOS INPUTS: Jornada, Google Maps y Stream */}
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Jornada / Semana</label>
-          <input type="text" name="jornada" defaultValue={initialData.jornada} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Semana 1 o Jornada 3"/>
+          <input type="text" name="jornada" defaultValue={initialData.jornada ?? ''} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="Ej. Semana 1 o Jornada 3"/>
         </div>
 
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">URL de Google Maps (Cómo llegar)</label>
-          <input type="url" name="maps_url" defaultValue={initialData.maps_url} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://maps.google.com/..."/>
+          <input type="url" name="maps_url" defaultValue={initialData.maps_url ?? ''} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://maps.google.com/..."/>
         </div>
 
         <div className="md:col-span-2">
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">URL de Transmisión / Video (Stream)</label>
-          <input type="url" name="stream_url" defaultValue={initialData.stream_url} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://youtube.com/live/... o Facebook Video"/>
+          <input type="url" name="stream_url" defaultValue={initialData.stream_url ?? ''} className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none" placeholder="https://youtube.com/live/... o Facebook Video"/>
         </div>
       </div>
 

@@ -1,3 +1,4 @@
+import { sortPlayers } from '@/utils/roster';
 import { PLAYER_FIELDS } from '@/utils/public-data';
 // app/(public)/roster/page.tsx
 import { createClient } from '@/utils/supabase/server';
@@ -20,14 +21,14 @@ export default async function RosterPage() {
       .from('players')
       .select(PLAYER_FIELDS)
       .eq('active', true)
-      // Ordenamos primero por jersey, que es lo más común en listas de fútbol americano
-      .order('jersey_number', { ascending: true })
       .order('last_name', { ascending: true }),
   ]);
 
   const teamName = teamData?.team_name || "Halcones";
   const logoUrl = teamData?.logo_url || "https://bnsports.com.mx/logos/halcones.png";
   const bgUrl = teamData?.header_bg_url; 
+
+  const sortedPlayers = sortPlayers(players);
 
   return (
     // Cambiamos el fondo a #f8fafc para que sea idéntico al Home
@@ -51,10 +52,10 @@ export default async function RosterPage() {
         </div>
 
         {/* Grid de Jugadores */}
-        {players && players.length > 0 ? (
+        {sortedPlayers.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
             {/* Ajustado a 2 cols móvil, 3 tablet, 4 laptop, 5 en PC grandes */}
-            {players.map((player) => (
+            {sortedPlayers.map((player) => (
               <PlayerCard key={player.id} player={player} />
             ))}
           </div>

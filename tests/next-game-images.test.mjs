@@ -12,6 +12,7 @@ const filename = fileURLToPath(new URL('../components/NextGameHero.tsx', import.
 const require = createRequire(filename);
 const compiled = new Module(filename);
 compiled.filename = filename;
+compiled.require = specifier => specifier === '@/utils/games' ? require('../utils/games.ts') : require(specifier);
 compiled.paths = require.resolve.paths('react');
 compiled._compile(ts.transpileModule(readFileSync(filename, 'utf8'), {
   compilerOptions: { jsx: ts.JsxEmit.ReactJSX, module: ts.ModuleKind.CommonJS, esModuleInterop: true },

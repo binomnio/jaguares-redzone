@@ -1,3 +1,4 @@
+import { formatGameDate, sortGames } from '@/utils/games';
 import { GAME_FIELDS } from '@/utils/public-data';
 // app/(public)/calendario/page.tsx
 import { createClient } from '@/utils/supabase/server';
@@ -6,20 +7,11 @@ import InnerHeader from '@/components/InnerHeader';
 
 export const revalidate = 60; // Refrescar caché cada minuto
 
-// Función compartida para la hora correcta de CDMX
-function formatGameDate(dateString: string) {
-  if (!dateString) return { date: '', time: '' };
-  const dateObj = new Date(dateString);
-  const date = dateObj.toLocaleDateString('es-MX', { timeZone: 'America/Mexico_City', day: '2-digit', month: 'short', year: 'numeric' }).replace('.', '');
-  const time = dateObj.toLocaleTimeString('es-MX', { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', hour12: false });
-  return { date, time };
-}
-
 export default async function CalendarioPage() {
   const supabase = await createClient();
 
   // Traer la identidad del equipo
-  const [{ data: teamData }, { data: allGames }] = await Promise.all([
+  const [{ data: teamData }, { data: rawGames }] = await Promise.all([
     supabase
       .from('team_settings')
       .select('*')
@@ -30,6 +22,8 @@ export default async function CalendarioPage() {
       .select(GAME_FIELDS)
       .order('game_date', { ascending: true }),
   ]);
+
+  const allGames = sortGames(rawGames);
 
   const teamName = teamData?.team_name || "Halcones";
   const teamShortName = teamData?.short_name || "HAL";
@@ -130,7 +124,7 @@ export default async function CalendarioPage() {
                   <div className="flex flex-col text-[10px] md:text-xs uppercase font-bold tracking-widest text-gray-500 text-center md:text-left gap-1.5 w-full md:w-auto">
                     <div className="flex items-center justify-center md:justify-start gap-1.5">
                       <svg className="w-4 h-4 text-team-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                      <span>{exactDate.date} • {exactDate.time} hrs</span>
+                      <span>{exactDate.date} • {exactDate.isTBD ? exactDate.time : `${exactDate.time} hrs`}</span>
                     </div>
                     <div className="flex items-center justify-center md:justify-start gap-1.5">
                       <svg className="w-4 h-4 text-team-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
