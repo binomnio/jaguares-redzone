@@ -27,7 +27,7 @@ test('home reads start concurrently and preserve filters/order without the unuse
   assert.deepEqual(operations.filter(x => x[1] === 'order'), [
     ['games', 'order', 'game_date', { ascending: true }],
     ['standings', 'order', 'position', { ascending: true }],
-    ['players', 'order', 'jersey_number', { ascending: true }],
+    ['players', 'order', 'last_name', { ascending: true }],
   ]);
   finish.forEach(done => done());
   assert.deepEqual((await loading).map(x => x.data[0].table), started);

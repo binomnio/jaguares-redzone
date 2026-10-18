@@ -1,3 +1,6 @@
+import { formatGameDate, sortGames } from '@/utils/games';
+import { getHomePlayers } from '@/utils/roster';
+import HomeStandings from '@/components/HomeStandings';
 import { loadHomeData } from '@/utils/public-data';
 // app/(public)/page.tsx
 import NextGameHero from '@/components/NextGameHero';
@@ -8,41 +11,19 @@ import Link from 'next/link';
 
 export const revalidate = 60; 
 
-// Función auxiliar para forzar la lectura en el horario oficial de México
-function formatGameDate(dateString: string) {
-  if (!dateString) return { date: '', time: '' };
-  
-  const dateObj = new Date(dateString);
-  const date = dateObj.toLocaleDateString('es-MX', { 
-    timeZone: 'America/Mexico_City', 
-    day: '2-digit', 
-    month: 'short', 
-    year: 'numeric' 
-  }).replace('.', ''); 
-
-  const time = dateObj.toLocaleTimeString('es-MX', { 
-    timeZone: 'America/Mexico_City', 
-    hour: '2-digit', 
-    minute: '2-digit',
-    hour12: false
-  });
-  
-  return { date, time };
-}
-
 export default async function HomePage() {
   const supabase = await createClient();
 
   // Datos del Equipo
-  const [{ data: teamData }, { data: allGames }, { data: standings }, { data: allPlayers }] = await loadHomeData(supabase);
+  const [{ data: teamData }, { data: rawGames }, { data: standings }, { data: allPlayers }] = await loadHomeData(supabase);
   const teamName = teamData?.team_name || "Jaguares";
   const teamShortName = teamData?.short_name || "JAG";
   const teamRecord = teamData?.current_record || "0-0";
   const teamLogo = teamData?.logo_url || "https://bnsports.com.mx/logos/jaguaresp.png";
   const heroBackground = teamData?.header_bg_url || "https://bnsports.com.mx/img/jaguares-back.jpg"; 
 
-  const featuredPlayers = allPlayers?.filter(p => p.is_featured).slice(0, 4);
-  const rosterPreview = allPlayers?.slice(0, 5);
+  const allGames = sortGames(rawGames);
+  const { featuredPlayers, rosterPreview } = getHomePlayers(allPlayers);
 
   return (
     <main className="min-h-screen bg-[#f8fafc] text-gray-800">
@@ -138,7 +119,7 @@ export default async function HomePage() {
                           <span className="text-[9px] uppercase tracking-widest font-bold text-gray-400">Finalizado</span>
                         ) : (
                           <span className="text-[9px] uppercase tracking-widest font-bold text-gray-500">
-                            {exactDate.time} hrs
+                            {exactDate.isTBD ? exactDate.time : `${exactDate.time} hrs`}
                           </span>
                         )}
                       </div>  
@@ -176,7 +157,7 @@ export default async function HomePage() {
                         <div className="flex flex-col text-[10px] uppercase font-bold tracking-widest text-gray-500 w-full sm:w-auto text-center sm:text-left gap-1">
                           <div className="flex items-center justify-center sm:justify-start gap-1.5">
                             <svg className="w-3.5 h-3.5 text-team-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                            <span>{exactDate.date} • {exactDate.time} hrs</span>
+                            <span>{exactDate.date} • {exactDate.isTBD ? exactDate.time : `${exactDate.time} hrs`}</span>
                           </div>
                           <div className="flex items-center justify-center sm:justify-start gap-1.5">
                             <svg className="w-3.5 h-3.5 text-team-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -210,43 +191,7 @@ export default async function HomePage() {
             {/* DERECHA: Standings y Lista de Roster */}
             <div className="flex flex-col w-full gap-10">
               
-              {/* Tabla de Posiciones */}
-              <div>
-                <h2 className="text-2xl font-black text-gray-900 uppercase tracking-tighter mb-6 flex items-center gap-2">
-                  <span className="w-2 h-6 bg-team-text rounded-full"></span> Posiciones
-                </h2>
-                <div className="glass-panel rounded-2xl overflow-x-auto border border-white/80">
-                  <table className="w-full text-left text-sm min-w-[500px]">
-                    <thead className="border-b border-gray-200/50 bg-white/40">
-                      <tr>
-                        <th className="p-3 md:p-4 text-center font-black text-gray-400 text-[9px] md:text-[10px] uppercase tracking-widest">Pos</th>
-                        <th className="p-3 md:p-4 font-black text-gray-400 text-[9px] md:text-[10px] uppercase tracking-widest">Equipo</th>
-                        <th className="p-3 md:p-4 text-center font-black text-team-text text-[9px] md:text-[10px] uppercase tracking-widest">G</th>
-                        <th className="p-3 md:p-4 text-center font-black text-gray-400 text-[9px] md:text-[10px] uppercase tracking-widest">E</th>
-                        <th className="p-3 md:p-4 text-center font-black text-gray-400 text-[9px] md:text-[10px] uppercase tracking-widest">P</th>
-                        <th className="p-3 md:p-4 text-center font-black text-gray-400 text-[9px] md:text-[10px] uppercase tracking-widest">PF</th>
-                        <th className="p-3 md:p-4 text-center font-black text-gray-400 text-[9px] md:text-[10px] uppercase tracking-widest">PC</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200/30">
-                      {standings?.map((team) => (
-                        <tr key={team.id} className={`transition-colors hover:bg-white/50 ${team.team_name === teamName ? 'bg-team-primary/5' : ''}`}>
-                          <td className="p-3 md:p-4 text-center font-black text-gray-400">{team.position}</td>
-                          <td className="p-3 md:p-4 font-black text-gray-800 flex items-center gap-2 md:gap-3">
-                            {team.logo_url && <div className="w-5 h-5 md:w-6 md:h-6 relative"><Image src={team.logo_url} alt={team.team_name} fill sizes="(min-width: 768px) 24px, 20px" className="object-contain"/></div>}
-                            <span className="truncate max-w-[120px]">{team.short_name || team.team_name}</span>
-                          </td>
-                          <td className="p-3 md:p-4 text-center font-black text-team-text">{team.wins}</td>
-                          <td className="p-3 md:p-4 text-center font-bold text-gray-500">{team.ties}</td>
-                          <td className="p-3 md:p-4 text-center font-bold text-gray-500">{team.losses}</td>
-                          <td className="p-3 md:p-4 text-center font-bold text-gray-400 text-xs">{team.pf}</td>
-                          <td className="p-3 md:p-4 text-center font-bold text-gray-400 text-xs">{team.pc}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+              <HomeStandings standings={standings} teamName={teamName} />
 
               {/* Lista Compacta de Roster */}
               <div>

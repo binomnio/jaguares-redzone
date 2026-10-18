@@ -1,11 +1,13 @@
 // components/NextGameHero.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { formatGameDate, isTbdDate, sortGames, getInitialGameIndex } from '@/utils/games';
 import Image from 'next/image';
 
 type Game = {
   id: string;
+  jornada?: string | null;
   opponent_name: string;
   opponent_logo_url: string;
   opponent_short_name?: string;
@@ -20,63 +22,32 @@ type Game = {
   opponent_score?: number;
 };
 
-// Función para forzar la lectura en el horario oficial de México
-function formatGameDate(dateString: string) {
-  if (!dateString) return { date: '', time: '' };
-  
-  const dateObj = new Date(dateString);
-  
-  const date = dateObj.toLocaleDateString('es-MX', { 
-    timeZone: 'America/Mexico_City', 
-    day: '2-digit', 
-    month: 'short', 
-    year: 'numeric' 
-  }).replace('.', ''); 
-
-  const time = dateObj.toLocaleTimeString('es-MX', { 
-    timeZone: 'America/Mexico_City', 
-    hour: '2-digit', 
-    minute: '2-digit',
-    hour12: false
-  });
-  
-  return { date, time };
-}
-
-export default function NextGameHero({ 
-  allGames, 
+export default function NextGameHero({
+  allGames,
   teamLogo,
   teamName = "Halcones",
-  teamShortName = "HAL",
   teamRecord = "0-0"
-}: { 
+}: {
   allGames: Game[];
   teamLogo: string;
   teamName?: string;
   teamShortName?: string;
   teamRecord?: string;
 }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const games = useMemo(() => sortGames(allGames), [allGames]);
+  const [selectedGameId, setSelectedGameId] = useState<string | null>(null);
+  const [selectionTime] = useState(() => Date.now());
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const selectedIndex = games.findIndex(game => game.id === selectedGameId);
+  const currentIndex = selectedIndex !== -1 ? selectedIndex : getInitialGameIndex(games, selectionTime);
+  const currentGame = games[currentIndex];
+  const isTBD = isTbdDate(currentGame?.game_date);
 
-  // Al cargar, busca automáticamente cuál es el partido más próximo (upcoming)
-  useEffect(() => {
-    if (!allGames || allGames.length === 0) return;
-    
-    const nextGameIndex = allGames.findIndex(g => 
-      g.status === 'upcoming' || new Date(g.game_date).getTime() > new Date().getTime()
-    );
-    
-    setCurrentIndex(nextGameIndex !== -1 ? nextGameIndex : allGames.length - 1);
-  }, [allGames]);
-
-  const currentGame = allGames[currentIndex];
-  
   const isPast = currentGame ? (currentGame.status === 'final' || new Date(currentGame.game_date).getTime() <= new Date().getTime()) : false;
 
   // Lógica del Reloj
   useEffect(() => {
-    if (!currentGame || isPast) return;
+    if (!currentGame || isPast || isTBD) return;
 
     const timer = setInterval(() => {
       const currentDiff = new Date(currentGame.game_date).getTime() - new Date().getTime();
@@ -92,17 +63,17 @@ export default function NextGameHero({
       }
     }, 1000);
     return () => clearInterval(timer);
-  }, [currentGame, isPast]);
+  }, [currentGame, isPast, isTBD]);
 
   if (!currentGame) return null;
 
-  const goPrev = () => setCurrentIndex(prev => (prev > 0 ? prev - 1 : prev));
-  const goNext = () => setCurrentIndex(prev => (prev < allGames.length - 1 ? prev + 1 : prev));
+  const goPrev = () => setSelectedGameId(games[Math.max(0, currentIndex - 1)].id);
+  const goNext = () => setSelectedGameId(games[Math.min(games.length - 1, currentIndex + 1)].id);
 
   const hasPrev = currentIndex > 0;
-  const hasNext = currentIndex < allGames.length - 1;
+  const hasNext = currentIndex < games.length - 1;
 
-  const defaultLogo = "https://bnsports.com.mx/logos/halcones.png"; 
+  const defaultLogo = "https://bnsports.com.mx/logos/halcones.png";
   const homeTeamLogo = (currentGame.is_home ? teamLogo : currentGame.opponent_logo_url) || defaultLogo;
   const awayTeamLogo = (currentGame.is_home ? currentGame.opponent_logo_url : teamLogo) || defaultLogo;
   const homeTeamName = currentGame.is_home ? teamName : (currentGame.opponent_name || 'Rival');
@@ -125,10 +96,10 @@ export default function NextGameHero({
   return (
     <div className="w-full max-w-4xl mx-auto px-4 relative z-10 pb-12 transition-all duration-500">
       <div className="glass-panel rounded-[2rem] p-6 md:p-10 relative">
-        
+
         {/* NAVEGACIÓN Y ENCABEZADO */}
         <div className="flex items-center justify-between mb-6">
-          
+
           {/* Flecha Izquierda */}
           <button onClick={goPrev} disabled={!hasPrev} className={`p-2 rounded-full transition-all ${hasPrev ? 'text-gray-600 hover:bg-gray-200/50 hover:text-team-text cursor-pointer' : 'text-transparent cursor-default'}`}>
             <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
@@ -140,7 +111,7 @@ export default function NextGameHero({
               {isPast ? 'Partido Finalizado' : 'Siguiente Encuentro'}
             </span>
             <p className="text-gray-800 text-sm md:text-base font-bold uppercase tracking-wider">
-                {exactDate.date} • {exactDate.time} hrs
+                {exactDate.date} • {exactDate.isTBD ? exactDate.time : `${exactDate.time} hrs`}
             </p>
             <p className="text-gray-500 text-xs md:text-sm mt-1 font-medium">{currentGame.location}</p>
           </div>
@@ -154,7 +125,7 @@ export default function NextGameHero({
 
         {/* LOGOS Y EQUIPOS */}
         <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 md:gap-16">
-          
+
           {/* LOCAL */}
           <div className="flex flex-col items-center group w-1/3">
             <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 relative mb-2 md:mb-4 transform transition-transform duration-300 ${!isPast && 'group-hover:scale-105'}`}>
@@ -194,7 +165,7 @@ export default function NextGameHero({
         </div>
 
         {/* RELOJ (Solo se muestra si el partido no ha pasado) */}
-        {!isPast && (
+        {!isPast && !isTBD && (
             <div className="mt-8 flex justify-center gap-2 sm:gap-4 md:gap-6 animate-fade-in">
             {[
                 { label: 'Días', value: timeLeft.days },
@@ -214,7 +185,7 @@ export default function NextGameHero({
         {/* BOTONES DE MAPA Y TRANSMISIÓN */}
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
           {currentGame.maps_url && (
-            <a href={currentGame.maps_url} target="_blank" rel="noopener noreferrer" 
+            <a href={currentGame.maps_url} target="_blank" rel="noopener noreferrer"
                className="flex items-center justify-center gap-2 glass-panel hover:bg-team-text/10 border border-team-text/30 text-team-text px-6 py-3 rounded-full font-bold uppercase text-[10px] tracking-widest transition-all shadow-sm group">
               <svg className="w-4 h-4 text-team-text group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               Cómo Llegar
@@ -228,7 +199,7 @@ export default function NextGameHero({
             </a>
           )}
         </div>
-        
+
       </div>
     </div>
   );

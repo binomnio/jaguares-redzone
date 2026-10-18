@@ -130,7 +130,8 @@ const server = createServer(async (req, res) => {
     res.end(String(e));
   }
 });
-await new Promise((resolve) => server.listen(3051, "127.0.0.1", resolve));
+await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+const baseUrl = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch({
   executablePath: "/usr/bin/chromium",
   args: ["--no-sandbox"],
@@ -144,7 +145,7 @@ try {
       const page = await browser.newPage({ viewport: { width, height: 844 } });
       const errors = [];
       page.on("pageerror", (e) => errors.push(e.message));
-      const response = await page.goto("http://127.0.0.1:3051" + path, {
+      const response = await page.goto(baseUrl + path, {
         waitUntil: "networkidle",
       });
       assert.equal(response.status(), 200);

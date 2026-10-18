@@ -104,3 +104,7 @@ No hay mejora uniforme de Lighthouse/LCP. Roster y posiciones empeoran en las me
 Para regenerar las medianas tras ambas fases: `node /tmp/redzone-harness/summarize-performance.mjs`.
 
 La transferencia mediana de JavaScript en inicio/móvil permanece prácticamente igual: 150359 → 150393 bytes. No se afirma una reducción de JavaScript.
+
+## Base común
+
+La lógica compartida de TBD, roster y posiciones se documenta en [common-base.md](common-base.md). Las cifras históricas de esta página no constituyen una medición de la revisión que unifica los portales.
