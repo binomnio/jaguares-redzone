@@ -37,7 +37,7 @@ const schemas: Record<string, Record<string, Rule>> = {
     our_score: integer(), opponent_score: integer(), jornada: text(), maps_url: { kind: 'url' }, stream_url: { kind: 'url' },
   },
   players: {
-    first_name: text(true), last_name: text(true), jersey_number: text(true, 10), position: text(true, 50), photo_url: image,
+    first_name: text(true), last_name: text(true), jersey_number: text(true, 10), position: text(false, 50), photo_url: image,
     height: text(false, 30), weight: text(false, 30), bio: text(false, 5000), active: { kind: 'boolean' }, is_featured: { kind: 'boolean' },
   },
   standings: {
