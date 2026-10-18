@@ -28,6 +28,27 @@ function client(user = { app_metadata: { role: 'admin' } }, options = {}) {
 }
 const request = body => new Request('https://example.com/api', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
 
+test('players can be created and edited without a position while other validation remains enforced', async () => {
+  for (const editing of [false, true]) {
+    for (const position of [undefined, null, '', 'QB']) {
+      const body = { ...bodies.players };
+      if (position === undefined) delete body.position;
+      else body.position = position;
+      const db = client();
+      const response = await mutate(request(body), db, 'players', editing ? id : undefined);
+      assert.equal(response.status, 200);
+      const saved = db.calls.find(c => c[0] === (editing ? 'update' : 'insert'))[1];
+      assert.deepEqual(editing ? saved : saved[0], body);
+    }
+  }
+  for (const position of [123, 'x'.repeat(51)]) {
+    assert.throws(() => validatePayload('players', { ...bodies.players, position }));
+  }
+  for (const key of ['first_name', 'last_name', 'jersey_number']) {
+    assert.throws(() => validatePayload('players', { ...bodies.players, position: null, [key]: '' }));
+  }
+});
+
 test('only server-controlled admin metadata grants access', async () => {
   assert.equal(isAdmin(null), false);
   assert.equal(isAdmin({ user_metadata: { role: 'admin' } }), false);

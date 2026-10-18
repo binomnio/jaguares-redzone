@@ -17,7 +17,7 @@ export default function PlayerForm({ initialData = {} }: { initialData?: any }) 
       first_name: formData.get('first_name'),
       last_name: formData.get('last_name'),
       jersey_number: formData.get('jersey_number'),
-      position: formData.get('position'),
+      position: String(formData.get('position') ?? '').trim() || null,
       photo_url: formData.get('photo_url'),
       height: formData.get('height'),
       weight: formData.get('weight'),
@@ -70,7 +70,7 @@ export default function PlayerForm({ initialData = {} }: { initialData?: any }) 
 
         <div>
           <label className="block text-xs font-bold text-gray-400 uppercase mb-2">Posición</label>
-          <input type="text" name="position" defaultValue={initialData.position} required placeholder="Ej. QB, WR, LB..." className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold" />
+          <input type="text" name="position" defaultValue={initialData.position ?? ''} placeholder="Ej. QB, WR, LB..." className="w-full min-w-0 bg-gray-900 border border-gray-700 rounded p-3 text-white focus:border-team-primary outline-none uppercase font-bold" />
         </div>
       </div>
 
